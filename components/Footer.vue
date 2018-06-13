@@ -1,38 +1,44 @@
 <template>
     <div class="footer">
         <div  id="foot_left">
-        تمامی حقوق این سایت متعلق به دانشگاه امیرکبیر بوده و هرگونه  استفاده از منابع و طراحی های این سایت توسط نهادی خارج از دانشگاه با پیگرد قانونی همراه خواهد بود. 
+            <b>
+                تمامی حقوق این سایت متعلق به دانشگاه امیرکبیر بوده
+                و هرگونه  استفاده از منابع و طراحی های این سایت توسط 
+                نهادی خارج از دانشگاه با پیگرد قانونی همراه خواهد بود. 
+            </b>       
         </div>
 
         <div id="social_network">
-            <h4 id="txt_social">به ما در رسانه های اجتماعی بپیوندید</h4>
+            <b id="txt_social">به ما در رسانه های اجتماعی بپیوندید</b>
             <div id="logo">
-                <a href="https://www..com" id="facebook1"></a>
-                <a href="https://www..com" id="google1"></a>
                 <a href="https://www..com" id="twitter1"></a>
-                <a href="https://www..com" id="facebook1"></a>
                 <a href="https://www..com" id="google1"></a>
+                <a href="https://www..com" id="facebook1"></a>
                 <a href="https://www..com" id="twitter1"></a>
+                <a href="https://www..com" id="google1"></a>
+                <a href="https://www..com" id="facebook1"></a>
             
             </div>
         </div>
 
         <div id="info">
-            <h4 id="txt_info">اطلاعات ما</h4>
-            <a href="" id="link">درباره ما</a> 
-            <br>
-            <a href="" id="link">تماس با ما</a>
+            <b id="txt_info">اطلاعات ما</b>
+                <br>
+                <a href="" id="link">درباره ما</a> 
+                <br>
+                <a href="" id="link">تماس با ما</a>
         </div>
 
         <div id="facility">
-            <h4 id="txt_facility">خدمات مشتریان</h4>
-            <a href="" id="link">سوالات متداول</a> 
-            <br> 
-            <a href="" id="link">بازگرداندن کالا</a> 
-            <br>
-            <a href="" id="link">شرایط استفاده</a> 
-            <br> 
-            <a href="" id="link">حریم شخصی</a> 
+            <b id="txt_facility">خدمات مشتریان</b>
+                <br>
+                <a href="" id="link">سوالات متداول</a> 
+                <br> 
+                <a href="" id="link">بازگرداندن کالا</a> 
+                <br>
+                <a href="" id="link">شرایط استفاده</a> 
+                <br> 
+                <a href="" id="link">حریم شخصی</a> 
         </div>
     </div>
 </template>
@@ -40,9 +46,13 @@
 
 
 <style scoped>
-   
+   @font-face {
+        font-family: myFirstFont;
+        src: url(~/assets/font/Shabnam-light.woff);
+    }
     .footer{
         display: flex;
+        flex-direction: row-reverse;
         margin-top: 30px;
         background-color: #EFEFEF;
         padding-top: 30px;
