@@ -9,6 +9,12 @@
         <div class="searchbar">
             <search-bar @searched="searchHandler" />
         </div>
+        <br/>
+        <br/>
+        <br/>
+        <div class="categories">
+            <categories-bar />
+        </div>
     </div>
 </template>
 
@@ -16,10 +22,12 @@
 <script>
 import SearchBar from '~/components/SearchBar';
 import UserInfo from '~/components/UserInfo';
+import CategoriesBar from '~/components/CategoriesBar';
 export default {
     components: {
         SearchBar,
-        UserInfo
+        UserInfo,
+        CategoriesBar
     },
     data() {
         return {
@@ -39,22 +47,22 @@ export default {
     .navbar {
         height: 10vh;
         width: 100%;
-        background: gray;
         padding: 1rem;
         display: flex;
+        /* border-bottom:thin solid #DCE2E6; */
     }
     .userData{ 
         display: flex;
-        flex: 4;
+        flex: 3;
     }
     .title{ 
         display: flex;
-        flex: 4;
+        flex: 2;
         font-size: 1rem;
     }
     .searchbar{ 
         display: flex;
-        flex: 4;
+        flex: 2;
     }
 
 </style>
