@@ -1,10 +1,38 @@
 <template>
     <div class="footer">
-        <div class="services">services</div>
-        <div class="info">info</div>
-        <div class="social">تست تست</div>
-        <div class="text">
-            نبتالنتیبال بیملهتبلنتابی منتبیل
+        <div  id="foot_left">
+        تمامی حقوق این سایت متعلق به دانشگاه امیرکبیر بوده و هرگونه  استفاده از منابع و طراحی های این سایت توسط نهادی خارج از دانشگاه با پیگرد قانونی همراه خواهد بود. 
+        </div>
+
+        <div id="social_network">
+            <h4 id="txt_social">به ما در رسانه های اجتماعی بپیوندید</h4>
+            <div id="logo">
+                <a href="https://www..com" id="facebook1"></a>
+                <a href="https://www..com" id="google1"></a>
+                <a href="https://www..com" id="twitter1"></a>
+                <a href="https://www..com" id="facebook1"></a>
+                <a href="https://www..com" id="google1"></a>
+                <a href="https://www..com" id="twitter1"></a>
+            
+            </div>
+        </div>
+
+        <div id="info">
+            <h4 id="txt_info">اطلاعات ما</h4>
+            <a href="" id="link">درباره ما</a> 
+            <br>
+            <a href="" id="link">تماس با ما</a>
+        </div>
+
+        <div id="facility">
+            <h4 id="txt_facility">خدمات مشتریان</h4>
+            <a href="" id="link">سوالات متداول</a> 
+            <br> 
+            <a href="" id="link">بازگرداندن کالا</a> 
+            <br>
+            <a href="" id="link">شرایط استفاده</a> 
+            <br> 
+            <a href="" id="link">حریم شخصی</a> 
         </div>
     </div>
 </template>
@@ -12,28 +40,135 @@
 
 
 <style scoped>
-    .footer {
+   
+    .footer{
         display: flex;
-        width: 100%;
-        background: gray;
-        height: 10vh;
+        margin-top: 30px;
+        background-color: #EFEFEF;
+        padding-top: 30px;
+        padding-bottom: 30px;
     }
-
-    .services {
-        display: flex;
-        flex: 3;
+    #foot_left{
+        flex: 4 0 ; 
+        margin-left: 7%;
+        text-align: right;
+        padding-right: 10px;
+        font-family: myFirstFont;
+        color: #595959;
+        font-size: 90%;
+        
     }
-    .info {
-        display: flex;
-        flex: 3;
+    #social_network{
+        flex: 3 0 ;
+        text-align: center;
+        display: grid 1 2;
     }
-    .social {
-        display: flex;
-        flex: 3;
+    #txt_social{
+        margin-top: 1px;
+        margin-bottom: 0px;
+        color: #595959;
     }
-    .text {
-        display: flex;
-        flex: 3;
+    #logo{
+        display: grid ;
+        grid-template-columns: auto auto auto;
+        padding-left: 35%;
+        padding-right: 35%;
     }
+    #facebook1{
+        background-image: url('~/assets/pic/facebook-logo-button.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 32px;
+        height: 32px;
+        margin-right: 3px;
+        margin-left: 3px;
+        margin-top: 15px;
+        
+    }
+    #google1{
+        background-image: url('~/assets/pic/google-plus.png');
+        background-repeat: no-repeat;	
+        background-size: 100% 100%;
+        width: 32px;
+        height: 32px;
+        margin-right: 3px;
+        margin-left: 3px;
+        margin-top: 15px;
+        
+    }
+    #twitter1{
+        background-image: url('~/assets/pic/twitter.png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 32px;
+        height: 32px;
+        margin-right: 3px;
+        margin-left: 3px;
+        margin-top: 15px;
+    }
+    #facebook1:hover{
+        background-image: url('~/assets/pic/facebook-logo-button(1).png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 32px;
+        height: 32px;
+        margin-right: 3px;
+        margin-left: 3px;
+        margin-top: 15px;
+        
+    }
+    #google1:hover{
+        background-image: url('~/assets/pic/google-plus(1).png');
+        background-repeat: no-repeat;	
+        background-size: 100% 100%;
+        width: 32px;
+        height: 32px;
+        margin-right: 3px;
+        margin-left: 3px;
+        margin-top: 15px;
+        
+    }
+    #twitter1:hover{
+        background-image: url('~/assets/pic/twitter(1).png');
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 32px;
+        height: 32px;
+        margin-right: 3px;
+        margin-left: 3px;
+        margin-top: 15px;
+    }
+    #info{
+        flex: 2 0 ;
+        text-align: center;
+    }
+    #txt_info{
+        margin-top: 1px;
+        color: #595959;
+    }
+    #facility{
+        flex: 2 0 ;
+        margin-right: 7%;
+        text-align: center;
+    }
+    #txt_facility{
+        margin-top: 1px;
+        color: #595959;
+    }
+    #link{
+        text-decoration: none;
+        color: gray;
+        font-size: 80%;
+        font-family: myFirstFont;
+        
+    }
+    #link:hover{
+        text-decoration: none;
+        color: #3b55e6;
+        font-size: 80%;
+        font-family: myFirstFont;
+        
+    }
+   
 </style>
 
