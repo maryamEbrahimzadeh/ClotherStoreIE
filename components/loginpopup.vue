@@ -1,16 +1,68 @@
 <template>
-        <div data-role="popup" id="myPopup" class="ui-content" style="min-width:250px;">
-      <form method="post" action="/action_page_post.php">
-        <div>
-          <h3>Login information</h3>
-          <label for="usrnm" class="ui-hidden-accessible">Username:</label>
-          <input type="text" name="user" id="usrnm" placeholder="Username">
-          <label for="pswd" class="ui-hidden-accessible">Password:</label>
-          <input type="password" name="passw" id="pswd" placeholder="Password">
-          <label for="log">Keep me logged in</label>
-          <input type="checkbox" name="login" id="log" value="1" data-mini="true">
-          <input type="submit" data-inline="true" value="Log in">
-        </div>
+<div>
+    <b-btn v-b-modal.modalPrevent>Launch demo modal</b-btn>
+    <!-- Main UI -->
+    <!-- <div class="mt-3 mb-3">
+      Submitted Names:
+      <ul>
+        <li v-for="n in names">{{n}}</li>
+      </ul>
+    </div> -->
+    <!-- Modal Component -->
+    <b-modal id="modalPrevent"
+             ref="modal"
+             title="ورود"
+             @ok="handleOk"
+             @shown="clearName">
+      <form @submit.stop.prevent="handleSubmit">
+        <b-form-input type="text"
+                      placeholder="برای مثال فلان"
+                      v-model="email">
+        </b-form-input>
+        <b-form-input type="text"
+                      placeholder="رمز عبور وارد شه"
+                      v-model="pass">
+        </b-form-input>
       </form>
-    </div>
+      <p>
+      This <a href="#" v-b-tooltip title="Tooltip in a modal!">Link</a>
+      will show a tooltip on hover.
+    </p>
+    <b-modal id="modal-center" centered title="Bootstrap-Vue">
+    </b-modal>
+  </div>
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      name: '',
+      names: []
+    }
+  },
+  methods: {
+    clearName () {
+      this.name = ''
+    },
+    handleOk (evt) {
+      // Prevent modal from closing
+      evt.preventDefault()
+      if (!this.name) {
+        alert('Please enter your name')
+      } else {
+        this.handleSubmit()
+      }
+    },
+    handleSubmit () {
+      this.names.push(this.name)
+      this.clearName()
+      this.$refs.modal.hide()
+    }
+  }
+}
+</script>
+
+<style scoped>
+
+</style>
