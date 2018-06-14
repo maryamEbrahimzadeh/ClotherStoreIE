@@ -7,6 +7,7 @@
         <div class ="nav">تخفیف</div>
         <div class ="nav">برندها</div>
     </div>
+    
 </template>
 
 <script>
@@ -26,7 +27,8 @@ export default {
         align-items: center;
         width: 100%;
         margin-left: 100px; 
-        margin-right: 100px;   
+        margin-right: 100px; 
+        padding-bottom: 5px;  
         border-bottom:thin solid #DCE2E6;
     }
     .nav {

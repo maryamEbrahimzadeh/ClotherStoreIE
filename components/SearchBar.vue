@@ -37,13 +37,40 @@ export default {
     }
     .search {
         float: left; 
-        margin-left: 50px;
+        padding-right: 4px;
+        position: relative;
+        
     }
-    #in {
-        border-radius: 15px; 
-        height: 30px; 
-        width: 200px; 
-        padding-left: 20px;
+    #in {     
+        margin-left:10%;
+        border-radius: 14px;
+        background-image: url('~/assets/pic/magnifying-glass1.png');
+        background-repeat: no-repeat;
+        background-position: left 7px center;
+        margin-top: 6%;
+        margin-bottom:5%;
+        width: 110%;
+        height: 60%;
+        border-style: solid;
+        border-color:  rgb(112,112,112);
+        text-align: right;
+        padding-right: 8px;
+    }
+    #in:hover,#in:focus {
+        margin-left:10%;
+        border-radius: 14px;
+        background-image: url('~/assets/pic/magnifying-glass2.png');
+        background-repeat: no-repeat;
+        background-position: left 7px center;
+        margin-top: 6%;
+        margin-bottom:5%;
+        width: 110%;
+        height: 60%;
+        border-style: solid;
+        text-align: center;
+        border-color: #006DF0;
+        text-align: right;
+        padding-right: 8px;
     }
     #s1 {
         background-image: url('~/assets/pic/search.png');
@@ -65,7 +92,5 @@ export default {
         top:5px; 
         left: 25px;
     }
-    #in :hover {
-        border-color: #006DF0;
-    }
+    
 </style>
