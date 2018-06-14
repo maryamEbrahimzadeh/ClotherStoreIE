@@ -59,14 +59,14 @@ export default {
     }
     .title{ 
         display: flex;
-        flex: 3 0 auto;
+        flex: 2 0 auto;
         font-size: 2rem;
         font-style: none;
         margin: auto auto;
     }
     .searchbar{ 
         display: flex;
-        flex: 3 0 auto;
+        flex: 1 0 auto;
         position: relative;
         padding-right: -10%;
     }

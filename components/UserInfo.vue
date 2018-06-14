@@ -4,7 +4,7 @@
         <button class="button" id="o">عضویت</button>
         <button class="button" id="v">ورود</button>
     </span>
-    {{this.username}}
+    <!-- {{this.username}} -->
     </div>
 </template>
 

@@ -22,6 +22,7 @@ export default {
         src: url(~/assets/font/Shabnam-light.woff);
     }
     .navbarbox {
+        font-family: myFirstFont;
         display: flex; 
         justify-content: center;
         align-items: center;
@@ -32,6 +33,7 @@ export default {
         border-bottom:thin solid #DCE2E6;
     }
     .nav {
+        font-family: myFirstFont;
         display: flex; 
         /* flex: 6; */
         padding-left: 50px;
@@ -40,6 +42,7 @@ export default {
         margin-right: auto;  */
     }
     .nav:hover {
+        font-family: myFirstFont;
         color:#006DF0; 
         text-decoration: underline;
     }
