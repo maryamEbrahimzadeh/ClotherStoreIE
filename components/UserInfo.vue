@@ -2,15 +2,59 @@
     <div>
     <span class="reg">
         <button class="button" id="o">عضویت</button>
-        <button class="button" id="v">ورود</button>
+        <b-btn v-b-modal.modalPrevent class="button" id="v">ورود</b-btn>
     </span>
     <!-- {{this.username}} -->
+    <b-modal id="modalPrevent"
+             centered
+             ref="modal"
+             title="Submit your name"
+             @ok="handleOk"
+             @shown="clearName">
+      <form @submit.stop.prevent="handleSubmit">
+        <b-form-input type="text"
+                      placeholder="Enter your name"
+                      v-model="name"></b-form-input>
+        <b-form-input type="text"
+                      placeholder="Enter your name"
+                      v-model="name"></b-form-input>
+      </form>
+    <p>
+      This <a href="#" >Link</a>
+    </p>
+  </b-modal>
     </div>
 </template>
 
 <script>
 export default {
     props: ['username']
+    ,
+    data () {
+    return {
+      name: '',
+      names: []
+    }
+  },
+  methods: {
+    clearName () {
+      this.name = ''
+    },
+    handleOk (evt) {
+      // Prevent modal from closing
+      evt.preventDefault()
+      if (!this.name) {
+        alert('Please enter your name')
+      } else {
+        this.handleSubmit()
+      }
+    },
+    handleSubmit () {
+      this.names.push(this.name)
+      this.clearName()
+      this.$refs.modal.hide()
+    }
+  }
 }
 </script>
 

@@ -1,6 +1,6 @@
 <template>
 <div>
-    <b-btn v-b-modal.modalPrevent>Launch demo modal</b-btn>
+  <b-btn v-b-modal.modalPrevent>Launch demo modal</b-btn>
     <!-- Main UI -->
     <!-- <div class="mt-3 mb-3">
       Submitted Names:
@@ -9,27 +9,24 @@
       </ul>
     </div> -->
     <!-- Modal Component -->
-    <b-modal id="modalPrevent"
+  <b-modal id="modalPrevent"
              ref="modal"
-             title="ورود"
+             title="Submit your name"
              @ok="handleOk"
              @shown="clearName">
       <form @submit.stop.prevent="handleSubmit">
         <b-form-input type="text"
-                      placeholder="برای مثال فلان"
-                      v-model="email">
-        </b-form-input>
-        <b-form-input type="text"
-                      placeholder="رمز عبور وارد شه"
-                      v-model="pass">
-        </b-form-input>
+                      placeholder="Enter your name"
+                      v-model="name"></b-form-input>
       </form>
-      <p>
+    <p>
       This <a href="#" v-b-tooltip title="Tooltip in a modal!">Link</a>
       will show a tooltip on hover.
     </p>
     <b-modal id="modal-center" centered title="Bootstrap-Vue">
     </b-modal>
+  </b-modal>
+
   </div>
 </template>
 
@@ -62,7 +59,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-
-</style>
