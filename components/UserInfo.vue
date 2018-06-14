@@ -8,20 +8,25 @@
     <b-modal id="modalPrevent"
              centered
              ref="modal"
-             title="Submit your name"
+             title="ورود"
              @ok="handleOk"
              @shown="clearName">
       <form @submit.stop.prevent="handleSubmit">
-        <b-form-input type="text"
-                      placeholder="Enter your name"
+         <p id="title"> شماره تلفن یا ایمیل </p>
+        <b-form-input id= "input"
+                      type="text"
+                      placeholder="ایمیل"
                       v-model="name"></b-form-input>
-        <b-form-input type="text"
-                      placeholder="Enter your name"
+         <p id="title"> رمز عبور</p>             
+        <b-form-input id= "input"
+                      type="text"
+                      placeholder="رمز"
                       v-model="name"></b-form-input>
       </form>
-    <p>
-      This <a href="#" >Link</a>
-    </p>
+    <p id= "forget">
+        رمز عبور خود را فراموش کرده اید؟
+       <a href="#" >کلیک کنید</a>
+    </p>    
   </b-modal>
     </div>
 </template>
@@ -98,5 +103,32 @@ export default {
         font-family: myFirstFont; 
         color:#006DF0; 
         border-color:#006DF0;
+    }
+    #modalPrevent {
+        font-family: myFirstFont; 
+        text-align: center;
+    }
+    #input {
+        font-family: myFirstFont;
+        border-radius: 14px;
+        width: 80%;
+        height: 60%;
+        border-style: solid;
+        border-color:  rgb(112,112,112);
+        color: darkgray;
+        text-align: right;
+        padding-right: 8px;
+    }
+    #title {
+        font-family: myFirstFont; 
+        text-align: right;
+        color: #006DF0;
+    }
+    #forget {
+        font-family: myFirstFont;
+        text-align: center;
+    }
+    #forget > a {
+        color: #006DF0;
     }
 </style>
