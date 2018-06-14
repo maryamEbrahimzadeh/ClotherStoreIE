@@ -74,6 +74,7 @@
         display: grid 1 2;
     }
     #txt_social{
+        font-family: myFirstFont;
         margin-top: 1px;
         margin-bottom: 0px;
         color: #595959;
@@ -153,6 +154,7 @@
         text-align: center;
     }
     #txt_info{
+        font-family: myFirstFont;
         margin-top: 1px;
         color: #595959;
     }
@@ -162,6 +164,7 @@
         text-align: center;
     }
     #txt_facility{
+        font-family: myFirstFont;
         margin-top: 1px;
         color: #595959;
     }

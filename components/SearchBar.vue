@@ -41,7 +41,8 @@ export default {
         position: relative;
         
     }
-    #in {     
+    #in {  
+        font-family: myFirstFont;   
         margin-left:10%;
         border-radius: 14px;
         background-image: url('~/assets/pic/magnifying-glass1.png');
