@@ -3,6 +3,7 @@
   <div>
     
     <nuxt/>
+    <footer/>
   </div>
 </template>
 

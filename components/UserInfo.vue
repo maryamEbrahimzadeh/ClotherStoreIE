@@ -1,33 +1,34 @@
 <template>
     <div>
-    <span class="reg">
-        <button class="button" id="o">عضویت</button>
-        <b-btn v-b-modal.modalPrevent class="button" id="v">ورود</b-btn>
-    </span>
-    <!-- {{this.username}} -->
-    <b-modal id="modalPrevent"
-             centered
-             ref="modal"
-             title="ورود"
-             @ok="handleOk"
-             @shown="clearName">
-      <form @submit.stop.prevent="handleSubmit">
-         <p id="title"> شماره تلفن یا ایمیل </p>
-        <b-form-input id= "input"
-                      type="text"
-                      placeholder="ایمیل"
-                      v-model="name"></b-form-input>
-         <p id="title"> رمز عبور</p>             
-        <b-form-input id= "input"
-                      type="text"
-                      placeholder="رمز"
-                      v-model="name"></b-form-input>
-      </form>
-    <p id= "forget">
-        رمز عبور خود را فراموش کرده اید؟
-       <a href="#" >کلیک کنید</a>
-    </p>    
-  </b-modal>
+        <span class="reg">
+            <button class="button" id="o">عضویت</button>
+            <b-btn v-b-modal.modalPrevent class="button" id="v">ورود</b-btn>
+        </span>
+        <!-- {{this.username}} -->
+        <b-modal id="modalPrevent"
+                    centered
+                    ref="modal"
+                    title="ورود"
+                    @ok="handleOk"
+                    @shown="clearName">
+            <form @submit.stop.prevent="handleSubmit">
+                <p id="title"> شماره تلفن یا ایمیل </p>
+                <b-form-input id= "input"
+                            type="text"
+                            placeholder="برای مثال maryam.ebrahimzadeh@yahoo.com"
+                            v-model="name"></b-form-input>
+                <p id="title"> رمز عبور</p>             
+                <b-form-input id= "input"
+                            type="text"
+                            placeholder=""
+                            v-model="pass"></b-form-input>
+                </form>
+            <p id= "forget">
+                رمز عبور خود را فراموش کرده اید؟
+                <br/>
+            <a href="#" >کلیک کنید</a>
+            </p>    
+        </b-modal>
     </div>
 </template>
 
@@ -38,24 +39,30 @@ export default {
     data () {
     return {
       name: '',
+      pass:'',
       names: []
     }
   },
   methods: {
     clearName () {
       this.name = ''
+      this.pass = ''
     },
     handleOk (evt) {
       // Prevent modal from closing
       evt.preventDefault()
       if (!this.name) {
         alert('Please enter your name')
-      } else {
+      }else if (!this.pass){
+        alert('Please enter your password')
+      }else {
         this.handleSubmit()
       }
     },
     handleSubmit () {
       this.names.push(this.name)
+    //   alert('yes')
+    //   layout : 'logedIn'
       this.clearName()
       this.$refs.modal.hide()
     }
