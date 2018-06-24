@@ -9,7 +9,7 @@ const createStore = () => {
       getis_login : state =>state.is_login
     },
     mutations: { 
-      login(state,lg) {
+      login(state) {
         state.is_login = true;
       }   
     },
