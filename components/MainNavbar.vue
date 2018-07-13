@@ -1,7 +1,9 @@
 <template>
     <div class="navbar">
         <div class="userData">
-            <user-info :username="query" />
+            <!-- :username="query" -->
+            <user-info   @islogin="changecomp" @username="setname" v-if="!logedin" />
+            <user-info2 v-bind:username=this.username  v-else  />
         </div>
         <div class="title">
             Clothster
@@ -22,23 +24,32 @@
 
 <script>
 import SearchBar from '~/components/SearchBar';
+import UserInfo2 from '~/components/UserInfo2';
 import UserInfo from '~/components/UserInfo';
 import CategoriesBar from '~/components/CategoriesBar';
 export default {
     components: {
         SearchBar,
-        UserInfo,
-        CategoriesBar
+        UserInfo2,
+        CategoriesBar,
+        UserInfo
     },
     data() {
         return {
-            query: ''
+            query: '',
+            logedin :false,
+            username :"ali"
         }
     },
     methods: {
         searchHandler: function(e) {
-            this.query = e;
-            
+            this.query = e;            
+        },
+        changecomp:function(status){
+            this.logedin = status;
+        },
+        setname:function(name){
+            this.username = name;
         }
     }
 }
@@ -50,11 +61,10 @@ export default {
         width: 100%;
         padding: 1rem;
         display: flex;
-        /* border-bottom:thin solid #DCE2E6; */
     }
     .userData{ 
         display: flex;
-        flex: 3 0 auto ;
+        flex: 4 0 auto ;
 
     }
     .title{ 

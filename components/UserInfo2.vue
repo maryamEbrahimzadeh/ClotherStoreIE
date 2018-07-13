@@ -1,26 +1,28 @@
 <template>
     <div>
         <span class="reg">
-            <div id="nameandfamily">
-                 <!-- {{username}} -->
-                 maryam ebi
-            </div>
-            <div id = "basket">
+            <a id="nameandfamily">
+                 {{username}}
+                 <!-- مریم -->
+                 <!-- <a id ="nameimg"></a> -->
+            </a>
+            <a id = "basket">
                 سبد خرید
-                <a id="basketimg"></a>
-            </div>
-            <div id = "order">
+                <!-- <a id="basketimg"></a> -->
+            </a>
+            <a id = "order">
                 پیگیری سفارش
-                <a id="orderimg"></a>
-            </div>
+                <!-- <a id="orderimg"></a> -->
+            </a>
         </span>
         
     </div>
 </template>
 
 <script>
+
 export default {
-   
+   props: ['username'],
 }
 </script>
 
@@ -33,36 +35,37 @@ export default {
         flex: 3 0 auto;
 	    display: flex;
         float: right; 
-        margin-right: 50px; 
-        font-family: myFirstFont       
-    }
-    #basket{
-        flex : 1 0 auto;
-    }
-    #basketimg{
-        background-image: url('~/assets/pic/magnifying-glass1.png');
-        background-repeat: no-repeat;
-        /* background-position: left 7px center; */
-        width: 40%;
-        height: 60%;
-        border-style: solid;
-        border-color:  rgb(112,112,112);
-    }
-    #order{
-        flex :1 0 auto;
-    }
-    #ordertimg{
-        background-image: url('~/assets/pic/magnifying-glass2.png');
-        background-repeat: no-repeat;
-        /* background-position: left 7px center; */
-        width: 40%;
-        height: 60%;
-        border-style: solid;
-        border-color:  rgb(112,112,112);
+        margin-right: 30px; 
+        font-family: myFirstFont;
+        font-size: 90%; 
+        margin-top: 7%;
+        width: 100%;
+            
     }
     #nameandfamily{
         flex :1 0 auto;  
+        margin-right: 4px;
+        margin-left: 4px;
+        background-image: url('~/assets/pic/select2.png');
+        background-repeat: no-repeat;
+        background-position: left  center;
+    }
+     #basket{
+        flex : 1 0 auto;
+        margin-right: 4px;
+        margin-left: 4px;
+        background-image: url('~/assets/pic/basket.png');
+        background-repeat: no-repeat;
+        background-position: left  center;
+    }
+    #order{
+        flex :1 0 auto;
+        margin-right: 4px;
+        margin-left: 4px;
+        background-image: url('~/assets/pic/list.png');
+        background-repeat: no-repeat;
+        background-position: left  center;
     }
 
-   
+       
 </style>

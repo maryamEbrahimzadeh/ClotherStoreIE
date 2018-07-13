@@ -5,12 +5,10 @@
             <b-btn v-b-modal.modalPrevent class="button" id="v">ورود</b-btn>
         </span>
         <!-- {{this.username}} -->
-        <b-modal id="modalPrevent"
+        <b-modal hide-footer id="modalPrevent"
                     centered
                     ref="modal"
-                    title="ورود"
-                    @ok="handleOk"
-                    @shown="clearName">
+                    title="ورود">
             <form @submit.stop.prevent="handleSubmit">
                 <p id="title"> شماره تلفن یا ایمیل </p>
                 <b-form-input id= "input"
@@ -25,9 +23,9 @@
                 </form>
             <p id= "forget">
                 رمز عبور خود را فراموش کرده اید؟
-                <br/>
             <a href="#" >کلیک کنید</a>
-            </p>    
+            </p> 
+            <b-btn id="enter" @click="handleOk">ورود</b-btn> 
         </b-modal>
     </div>
 </template>
@@ -40,7 +38,6 @@ export default {
     return {
       name: '',
       pass:'',
-      names: []
     }
   },
   methods: {
@@ -60,11 +57,12 @@ export default {
       }
     },
     handleSubmit () {
-      this.names.push(this.name)
-    //   alert('yes')
-    //   layout : 'logedIn'
-      this.clearName()
-      this.$refs.modal.hide()
+    // this.$router.push(`login/${this.name}`);
+    //check for log in or not
+    this.$emit('islogin', true);
+    this.$emit('username',this.name);
+    this.clearName()
+    this.$refs.modal.hide()
     }
   }
 }
@@ -137,5 +135,12 @@ export default {
     }
     #forget > a {
         color: #006DF0;
+    }
+    #enter {
+        font-family: myFirstFont; 
+        border-radius: 20px;
+        width: 150px;
+        margin-left: 50%;
+        margin-right: 50%;
     }
 </style>
