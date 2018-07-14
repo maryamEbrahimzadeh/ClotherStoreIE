@@ -47,6 +47,7 @@ export default {
         },
         changecomp:function(status){
             this.logedin = status;
+            this.$emit('islogin', status);
         },
         setname:function(name){
             this.username = name;

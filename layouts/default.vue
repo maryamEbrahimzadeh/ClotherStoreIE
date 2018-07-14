@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <main-navbar />
-    <nuxt/>
+  <div class="main">
+    <main-navbar  @islogin="changecomp"/>
+    <nuxt v-if="!logedin" />
+    <slider-home-page v-if="logedin"/>
+    <news v-if="logedin"/>
     <Footer />
   </div>
 </template>
@@ -9,21 +11,42 @@
 <script>
 import Footer from '~/components/Footer';
 import MainNavbar from '~/components/MainNavbar';
+import News from '~/components/News';
+import SliderHomePage from '~/components/SliderHomePage';
 export default {
-  components: {
-    Footer,
-    MainNavbar,
-  },
+    components: {
+      Footer,
+      MainNavbar,
+      News,
+      SliderHomePage
+
+    },
+    data() {
+        return {
+            logedin :false,
+        }
+    },
+    methods: {
+        changecomp:function(status){
+            this.logedin = status;
+        }
+    }
   
 }
 </script>
 
 
 <style>
-html {
-  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  font-size: 16px;
-  direction: rtl;
-  word-spacing: 1px;
-}
+    @font-face {
+        font-family: myFirstFont;
+        src: url(~/assets/font/Shabnam-light.woff);
+    }
+    
+    html {
+      font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      direction: rtl;
+      word-spacing: 1px;
+    }
+   
 </style>
