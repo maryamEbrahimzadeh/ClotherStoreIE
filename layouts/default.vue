@@ -26,6 +26,7 @@ export default {
             logedin :false,
         }
     },
+    
     methods: {
         changecomp:function(status){
             this.logedin = status;
@@ -47,6 +48,10 @@ export default {
       font-size: 16px;
       direction: rtl;
       word-spacing: 1px;
+    }
+    .main{
+        display: flex;
+        flex-direction: column;
     }
    
 </style>

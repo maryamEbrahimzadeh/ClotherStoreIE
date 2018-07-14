@@ -1,7 +1,7 @@
 <template>
 
     <div class="content">
-        <!-- <div id ="text" v-if="logedin">بهترین ها را از ما خرید کنید</div> -->
+        <div id ="text" >بهترین ها را از ما خرید کنید</div>
 
         <div class="content2">
             <div class="brands">
@@ -41,15 +41,14 @@ export default {
         font-family: myFirstFont;
         src: url(~/assets/font/Shabnam-light.woff);
     }
-    #content{
+    .content{
         display: flex;
         flex-direction: column;
     }
     #text{
       text-align: center;
       font-family: myFirstFont ;
-      font-style: bold;
-      font-size: 150%;
+      font-size: 130%;
     }
     .content2{
         display: flex;

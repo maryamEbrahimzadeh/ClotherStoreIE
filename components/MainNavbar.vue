@@ -58,7 +58,7 @@ export default {
 
 <style scoped>
     .navbar {
-        height: 10vh;
+        /* height: 10vh; */
         width: 100%;
         padding: 1rem;
         display: flex;
