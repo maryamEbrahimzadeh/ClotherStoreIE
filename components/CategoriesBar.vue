@@ -1,11 +1,11 @@
 <template>
     <div class="navbarbox">
-        <div class ="nav" id ="mardane"  v-on:click="select($event)">مردانه</div>
-        <div class ="nav" id ="zanane" v-on:click="select($event)">زنانه</div>
-        <div class ="nav" id = "bachegane" v-on:click="select($event)">بچه گانه</div>
-        <div class ="nav" id = "varzeshi" v-on:click="select($event)">ورزشی</div>
-        <div class ="nav" id = "takhfif" v-on:click="select($event)">تخفیف</div>
-        <div class ="nav" id = "berandha" v-on:click="select($event)">برندها</div>
+        <div class ="nav" id ="مردانه"  v-on:click="select($event)">مردانه</div>
+        <div class ="nav" id ="زنانه" v-on:click="select($event)">زنانه</div>
+        <div class ="nav" id = "گانه" v-on:click="select($event)">بچه گانه</div>
+        <div class ="nav" id = "ورزشی" v-on:click="select($event)">ورزشی</div>
+        <div class ="nav" id = "تخفیف" v-on:click="select($event)">تخفیف</div>
+        <div class ="nav" id = "برندها" v-on:click="select($event)">برندها</div>
     </div>
     
 </template>

@@ -2,9 +2,11 @@
   <div class="main">
       <!-- {{$route.params.Category}}  -->
     <main-navbar  @islogin="changecomp"  @query="changePageProductList"/>
-    <nuxt  />
-    <!-- <filter-product-list /> -->
-    <product-list v-bind:categoryname="$route.params.Category" />
+    <!-- <nuxt  /> -->
+    <div class = "columns">
+        <filter-product-list id = "two" v-bind:categoryname=this.categoryname />
+        <product-list id = "one" v-bind:categoryname=this.categoryname />
+    </div>
     <Footer />
   </div>
 </template>
@@ -24,7 +26,7 @@ export default {
     },
     data() {
         return {
-            
+          categoryname : this.$route.params.Category,
         }
     },
     
@@ -54,6 +56,15 @@ export default {
       direction: rtl;
       word-spacing: 1px;
     }
-   
+   .columns{
+       display: flex;
+       flex-direction: row;
+   }
+   #one {
+       flex: 70%;
+   }
+   #two{
+       flex : 30%;
+   }
    
 </style>
