@@ -1,7 +1,10 @@
 <template>
   <div class="main">
+      <!-- {{$route.params.Category}}  -->
     <main-navbar  @islogin="changecomp"  @query="changePageProductList"/>
     <nuxt  />
+    <!-- <filter-product-list /> -->
+    <product-list v-bind:categoryname="$route.params.Category" />
     <Footer />
   </div>
 </template>
@@ -9,10 +12,14 @@
 <script>
 import Footer from '~/components/Footer';
 import MainNavbar from '~/components/MainNavbar';
+import ProductList from '~/components/ProductList';
+import FilterProductList from '~/components/FilterProductList';
 export default {
     components: {
       Footer,
       MainNavbar,
+      ProductList,
+      FilterProductList
 
     },
     data() {
@@ -22,7 +29,13 @@ export default {
     },
     
     methods: {
-        
+         changecomp:function(status){
+            this.logedin = status;
+        }
+        ,changePageProductList:function(query){
+            //change page
+            this.$router.push(`ProductList/${query}`);
+        }
     }
   
 }

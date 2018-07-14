@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      {{$route.params.Category}}
+      <!-- {{$route.params.Category}} -->
     </div>
 </template>
 

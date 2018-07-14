@@ -1,18 +1,26 @@
 <template>
     <div class="navbarbox">
-        <div class ="nav">مردانه</div>
-        <div class ="nav">زنانه</div>
-        <div class ="nav">بچه گانه</div>
-        <div class ="nav">ورزشی</div>
-        <div class ="nav">تخفیف</div>
-        <div class ="nav">برندها</div>
+        <div class ="nav" id ="mardane"  v-on:click="select($event)">مردانه</div>
+        <div class ="nav" id ="zanane" v-on:click="select($event)">زنانه</div>
+        <div class ="nav" id = "bachegane" v-on:click="select($event)">بچه گانه</div>
+        <div class ="nav" id = "varzeshi" v-on:click="select($event)">ورزشی</div>
+        <div class ="nav" id = "takhfif" v-on:click="select($event)">تخفیف</div>
+        <div class ="nav" id = "berandha" v-on:click="select($event)">برندها</div>
     </div>
     
 </template>
 
 <script>
 export default {
-    
+    methods: {
+        select: function(event) {
+            // targetId = event.currentTarget.id;
+            // alert(event.target.id);
+            // this.$router.push(`ProductList/${targetId}`);
+            this.$emit('targetId', event.target.id);
+            // alert(bye);
+        }
+    }
 }
 </script>
 

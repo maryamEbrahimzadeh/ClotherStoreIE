@@ -15,7 +15,7 @@
         <br/>
         <br/>
         <div class="categories">
-            <categories-bar />
+            <categories-bar  @targetId="selectFilter"/>
         </div>
         
     </div>
@@ -52,6 +52,9 @@ export default {
         },
         setname:function(name){
             this.username = name;
+        },
+        selectFilter:function(target){
+            this.$emit('targetId', target);
         }
     }
 }

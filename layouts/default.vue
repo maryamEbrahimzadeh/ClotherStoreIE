@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-    <main-navbar  @islogin="changecomp"  @query="changePageProductList"/>
+    <main-navbar  @islogin="changecomp"  @query="changePageProductList" @targetId="changePageProductList"/>
     <nuxt v-if="!logedin" />
     <slider-home-page v-if="logedin"/>
     <news v-if="logedin"/>
