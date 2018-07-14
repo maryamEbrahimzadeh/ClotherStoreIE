@@ -43,7 +43,8 @@ export default {
     },
     methods: {
         searchHandler: function(e) {
-            this.query = e;            
+            this.query = e;  
+            this.$emit('query', e);          
         },
         changecomp:function(status){
             this.logedin = status;

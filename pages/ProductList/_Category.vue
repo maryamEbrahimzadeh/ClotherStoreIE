@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-      
+      {{$route.params.Category}}
     </div>
 </template>
 
@@ -9,6 +9,7 @@
 
 
 export default {
+    layout : 'ProductLayout',
     methods: {
       
     },

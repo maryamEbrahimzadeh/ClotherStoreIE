@@ -52,8 +52,6 @@
 
 <script>
 export default {
-    // props: ['username']
-    // ,
     data () {
     return {
       name: '',
