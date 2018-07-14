@@ -1,11 +1,10 @@
 <template>
     <div>
         <span class="reg">
-            <button class="button" id="o">عضویت</button>
-            <b-btn v-b-modal.modalPrevent class="button" id="v">ورود</b-btn>
+            <b-btn v-b-modal.modalreg class="button" id="o">عضویت</b-btn>
+            <b-btn v-b-modal.modalenter class="button" id="v">ورود</b-btn>
         </span>
-        <!-- {{this.username}} -->
-        <b-modal hide-footer id="modalPrevent"
+        <b-modal hide-footer id="modalenter"
                     centered
                     ref="modal"
                     title="ورود">
@@ -27,13 +26,34 @@
             </p> 
             <b-btn id="enter" @click="handleOk">ورود</b-btn> 
         </b-modal>
+
+        <b-modal hide-footer id="modalreg"
+                    centered
+                    ref="modal"
+                    title="عضویت">
+            <form @submit.stop.prevent="handlereg">
+                <p id="title"> شماره تلفن یا ایمیل </p>
+                <b-form-input id= "input"
+                            type="text"
+                            placeholder="برای مثال maryam.ebrahimzadeh@yahoo.com"
+                            v-model="name">
+                </b-form-input>
+                <p id="title"> رمز عبور</p>             
+                <b-form-input id= "input"
+                            type="text"
+                            placeholder=""
+                            v-model="pass">
+                </b-form-input>
+            </form>
+            <b-btn id="register" @click="handleOk2">ثبت نام</b-btn> 
+        </b-modal>
     </div>
 </template>
 
 <script>
 export default {
-    props: ['username']
-    ,
+    // props: ['username']
+    // ,
     data () {
     return {
       name: '',
@@ -55,15 +75,21 @@ export default {
       }else {
         this.handleSubmit()
       }
-    },
-    handleSubmit () {
-    // this.$router.push(`login/${this.name}`);
-    //check for log in or not
+    },handleSubmit () {
     this.$emit('islogin', true);
     this.$emit('username',this.name);
     this.clearName()
     this.$refs.modal.hide()
+    },
+    handleOk2 (evt) {
+      // Prevent modal from closing
+      evt.preventDefault()
+    //   cheak it is not repetetive vali velesh kon nemikhad
+    //   add him to db
+    this.clearName()
+    this.$refs.modal.hide()
     }
+    
   }
 }
 </script>
@@ -92,6 +118,8 @@ export default {
         flex: 1 0 auto;
         font-family: myFirstFont;
         background-color: white;
+        color: darkgray;
+        margin-left: 2px;
     }
     #v:hover {
         

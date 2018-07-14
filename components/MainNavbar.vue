@@ -64,7 +64,7 @@ export default {
     }
     .userData{ 
         display: flex;
-        flex: 4 0 auto ;
+        flex: 3 0 auto ;
 
     }
     .title{ 
