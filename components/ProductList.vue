@@ -17,7 +17,7 @@
         <hr/>
         <div id = "products">
             <span id= "item" v-for="p in products" :key="p" >
-                 <product-card id = "item" v-bind:imgsrc =  p.src v-bind:name = p.name  v-bind:brandname = p.brand  v-bind:cost1 = p.cost1 v-bind:cost2 = p.cost2  />
+                 <product-card id = "item" v-bind:imgsrc = p.src v-bind:name = p.name  v-bind:brandname = p.brand  v-bind:cost1 = p.cost1 v-bind:cost2 = p.cost2  />
             </span>
         </div>
     </div>
@@ -38,8 +38,8 @@ export default {
             last : '1',
             selectedProduct:[],
             products:[
-            //     {src : '~/assets/pic/magnifying-glass2.png','name' : 'mobile',
-            // 'brand' : 'sony', 'cost1' :2000, 'cost2' : 1000} 
+                {'src' : '~/assets/pic/magnifying-glass2.png','name' : 'mobile',
+            'brand' : 'sony', 'cost1' :2000, 'cost2' : 1000} 
             ],//ajax fot complete it
         }
     },

@@ -1,5 +1,6 @@
 
 <template>
+<span>
     <div class = "profile">
        <div id= "right">
            <br/>
@@ -62,15 +63,28 @@
            تکرار رمز عبور جدید
            <br/>
            <input type="password" class = "item" id="conf"  />
-       </div>
-       <div ></div>
-        
+       </div>        
     </div>
+    <div  id= "address">
+        <div id="addrhead" v-on:click="select1($event)" >آدرس ها</div>
+        <hr/>
+        <div id="addreses">
+          <address />  
+        </div>
+        <button id="addaddress" v-on:click="add_address()" >اضافه کردن آدرس جدید</button>
+
+    </div>
+</span>
     
 </template>
 
 <script>
+
+import address from '~/components/address';
 export default {
+    components: {
+        address,
+    },
     props : ['username'],
     data() {
         return {
@@ -81,11 +95,25 @@ export default {
             pass:'123',
             city : 'yazd',
             phone2 : '123456',
-            idcard : '5030065326'
+            idcard : '5030065326',
+            toggle1 : 0,
+
 
         }
     },
     methods: {
+         select1 : function(ev){  
+          if (this.toggle1  == 1) {       
+                document.getElementById("addreses").style.visibility = "hidden";
+                document.getElementById("addreses").style.height = "0px";
+                this.toggle1 = 0;
+                //bayad inja on aksa ham avaz beshe badan ishala
+            } else{
+                document.getElementById("addreses").style.visibility = "visible";
+                // document.getElementById("addreses").style.height = "200px";
+                this.toggle1 = 1; 
+            }
+        },
       
         
     }
@@ -105,6 +133,9 @@ export default {
         height: 30%;
         align-self: center;
         border: solid black 1px;
+        margin-right: 40px;
+        margin-left: 15px;
+        margin: auto auto;
     }
     #right{
         margin:  15px 25px 15px 15px;
@@ -117,6 +148,7 @@ export default {
         box-shadow: none;
         border: none;
         background-color: rgb(219, 238, 255);
+        width: 80%;
     }
     .item:focus{
         border: none;
@@ -176,6 +208,33 @@ export default {
         margin: auto auto;
         margin-top: 20px;
     }
-
+    #address{
+        margin-right: 40px;
+        margin-left: 15px;
+        margin-top: 30px;
+    }
+    #addrhead{
+        background-image: url('~/assets/pic/select2.png');
+        background-repeat: no-repeat;
+        background-position:   left 2px center;
+        width: 15%;
+        text-align: right;
+        
+    }
+    #addaddress{
+        width: 20%;
+        background-color: blue;
+        color: white;
+        border-radius: 15px;
+        border: none;
+        margin-left: 5%;
+        height: 35px;
+    }
+    #addreses{
+        /* height: 0px;
+        visibility: hidden; */
+        background-color: aqua;
+        height: 100px;;
+    }
    
 </style>
