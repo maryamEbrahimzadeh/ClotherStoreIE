@@ -3,7 +3,7 @@
         <div class="userData">
             <!-- :username="query" -->
             <user-info   @islogin="changecomp" @username="setname" v-if="!logedin" />
-            <user-info2 v-bind:username=this.username  v-else  />
+            <user-info2 v-bind:username=this.username  v-bind:numberoforder=this.numberoforder  @profile="openprofile" v-else  />
         </div>
         <div class="title">
             Clothster
@@ -28,6 +28,7 @@ import UserInfo2 from '~/components/UserInfo2';
 import UserInfo from '~/components/UserInfo';
 import CategoriesBar from '~/components/CategoriesBar';
 export default {
+    props : ['numberoforder'],
     components: {
         SearchBar,
         UserInfo2,
@@ -38,8 +39,9 @@ export default {
         return {
             query: '',
             logedin :false,
-            username :"ali"
-        }
+            username :"ali",
+            
+             }
     },
     methods: {
         searchHandler: function(e) {
@@ -47,14 +49,18 @@ export default {
             this.$emit('query', e);          
         },
         changecomp:function(status){
-            this.logedin = status;
+            this.logedin = status;            
             this.$emit('islogin', status);
         },
         setname:function(name){
-            this.username = name;
+            this.username = name;            
+            this.$emit('username', this.username);
         },
         selectFilter:function(target){
             this.$emit('targetId', target);
+        },
+        openprofile:function(s){
+            this.$emit('profile',s);
         }
     }
 }

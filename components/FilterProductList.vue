@@ -100,7 +100,17 @@ export default {
     .rightbar{
         background-color: white;
     }
-    #f1 , #f2 , #f3 {
+    #f1 {
+        background-color: rgb(230, 240, 240);
+        margin: 10px 20px 10px 20px;
+        border-radius: 5px;
+    }
+    #f2 {
+        background-color: rgb(230, 240, 240);
+        margin: 10px 20px 10px 20px;
+        border-radius: 5px;
+    }
+    #f3 {
         background-color: rgb(230, 240, 240);
         margin: 10px 20px 10px 20px;
         border-radius: 5px;

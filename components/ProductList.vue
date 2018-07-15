@@ -37,8 +37,10 @@ export default {
             first : '1',
             last : '1',
             selectedProduct:[],
-            products:[{src : '~/assets/pic/magnifying-glass2.png','name' : 'mobile',
-            'brand' : 'sony', 'cost1' :2000, 'cost2' : 1000} ],//ajax fot complete it
+            products:[
+            //     {src : '~/assets/pic/magnifying-glass2.png','name' : 'mobile',
+            // 'brand' : 'sony', 'cost1' :2000, 'cost2' : 1000} 
+            ],//ajax fot complete it
         }
     },
     methods: {

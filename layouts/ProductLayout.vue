@@ -1,12 +1,16 @@
 <template>
   <div class="main">
       <!-- {{$route.params.Category}}  -->
-    <main-navbar  @islogin="changecomp"  @query="changePageProductList"/>
-    <!-- <nuxt  /> -->
+    <main-navbar @islogin="changecomp"  @query="changePageProductList" @targetId="changePageProductList"
+     v-bind:numberoforder=this.numberoforder @profile="profilePage"  @username="setusername" />
+
+    <!-- <nuxt v-show="!this.showprof" /> -->
     <div class = "columns">
-        <filter-product-list id = "two" v-bind:categoryname=this.categoryname />
-        <product-list id = "one" v-bind:categoryname=this.categoryname />
+        <filter-product-list id = "two" v-bind:categoryname=this.categoryname v-show="!this.showprof"/>
+        <product-list id = "one" @numberoforder="changenumorder" v-bind:categoryname=this.categoryname v-show="!this.showprof" />
     </div>
+    
+    <profile-comp  v-bind:username=this.username v-show="this.showprof" />
     <Footer />
   </div>
 </template>
@@ -16,31 +20,49 @@ import Footer from '~/components/Footer';
 import MainNavbar from '~/components/MainNavbar';
 import ProductList from '~/components/ProductList';
 import FilterProductList from '~/components/FilterProductList';
+import ProfileComp from '~/components/ProfileComp';
 export default {
     components: {
       Footer,
       MainNavbar,
       ProductList,
-      FilterProductList
+      FilterProductList,
+      ProfileComp,
 
     },
     data() {
         return {
-          categoryname : this.$route.params.Category,
+            categoryname : this.$route.params.Category,          
+            numberoforder : 0,
+            logedin : false,            
+            username : 'ali',
+            showprof : false,
         }
     },
     
     methods: {
-         changecomp:function(status){
+         changePageProductList:function(query){
+            //change page
+            alert(query);
+            this.$router.push(`/ProductList/${query}`);
+        },
+        changenumorder:function(n){
+            this.numberoforder = n;
+        },
+        profilePage:function(s){
+            this.showprof = s;
+        },
+        setusername:function(u){
+            this.username = u;
+        },
+        changecomp:function(status){
+            
             this.logedin = status;
         }
-        ,changePageProductList:function(query){
-            //change page
-            this.$router.push(`ProductList/${query}`);
-        }
     }
-  
 }
+  
+
 </script>
 
 
