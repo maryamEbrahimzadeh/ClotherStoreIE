@@ -37,6 +37,8 @@
 <script>
 export default {
   data () {
+      slide = 0,
+      sliding = null
     
   },
   methods: {

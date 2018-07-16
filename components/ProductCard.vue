@@ -1,6 +1,6 @@
 <template>
     <div class ="product">
-        <img id= "img" :src = this.imgsrc  />
+        <img id= "img" v-on:click="toDetail" :src = this.imgsrc  />
         <br/>
         {{name}}
         <br/>
@@ -26,7 +26,10 @@ export default {
         }
     },
     methods: {
-       
+        toDetail: function(){
+           this.$router.push(`/productDetail/${this.name}`);
+           
+       }
     }
 }
 </script>
