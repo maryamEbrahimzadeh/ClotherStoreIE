@@ -7,7 +7,7 @@
     <!-- <nuxt v-show="!this.showprof" /> -->
     <div class = "columns">
         <filter-product-list id = "two" v-bind:categoryname=this.categoryname v-show="!this.showprof"/>
-        <product-list id = "one" @numberoforder="changenumorder" v-bind:categoryname=this.categoryname v-show="!this.showprof" />
+        <product-list id = "one" @numberoforder="changenumorder" :categoryname="categoryname" v-show="!this.showprof" />
     </div>
     
     <profile-comp  v-bind:username=this.username v-show="this.showprof" />

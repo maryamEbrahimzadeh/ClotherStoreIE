@@ -1,8 +1,9 @@
 <template>
-    <div class ="product">
-        <img id= "img" :src = this.imgsrc  />
+    <div @click="test" class ="product">
+        <img id="img" :src="imgsrc"  />
         <br/>
         {{name}}
+        {{imgsrc}}
         <br/>
         {{brandname}}
         <br/>
@@ -26,7 +27,7 @@ export default {
         }
     },
     methods: {
-       
+        test: () => console.log(this.imgsrc)
     }
 }
 </script>

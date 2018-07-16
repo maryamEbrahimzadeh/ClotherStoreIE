@@ -26,7 +26,7 @@
        <div id = "center">
            {{username}}
            <br/>
-           <img id="img" :src=this.src />
+           <!-- <img id="img" :src=this.src /> -->
            <br/>
            <br/>
            جنسیت
@@ -69,36 +69,49 @@
         <div id="addrhead" v-on:click="select1($event)" >آدرس ها</div>
         <hr/>
         <div id="addreses">
-          <!-- <address  id="t" v-bind:name='maryam' v-bind:code="123456" v-bind:phone1="123" v-bind:phone2="987" 
-          v-bind:address="yazd"></address>   -->
-          <address/>
+            <table  class = "t1"  v-for="a in addresses" :key="a"   v-bind:style= "[adrslc ? {'border-color' : 'rgb(0, 217, 255)'} : {'border-color' : 'rgb(146, 144, 148)'}]">
+                <tr>
+                    <td class="atd" rowspan="2"  width="3%" v-on:click="setaddres()">'**'</td>     
+                    <td class="atd"  width="20%">تحویل گیرنده: {{a.name}} </td>  
+                    <td class="atd"  width="30%">شماره تلفن ثابت : {{a.phone1}} </td>
+                    <td class="atd"  width="20%">شماره تلفن همراه : {{a.phone2}} </td>
+                    <td class="atd"  width="5%">*</td>               
+                </tr>
+                <tr>
+                    <td class="atd"   colspan="2" width="30%">آدرس :{{a.address}} </td>                
+                    <td class="atd"  width="20%">کد پستی : {{a.code}}</td>
+                    <td class="atd"  width="5%">*</td>
+                </tr>
+            </table>
+            <button id="addaddress" v-on:click="add_address()" >اضافه کردن آدرس جدید</button>
         </div>
-        <button id="addaddress" v-on:click="add_address()" >اضافه کردن آدرس جدید</button>
     </div>
 
     <div  id= "order">
         <div id="orderhead" v-on:click="select2($event)" >سفارش ها</div>
         <hr/>
-        <table id = "t2">
-            <tr id="head">
-                <td width = "5%" >ردیف</td>
-                <td width = "15%">کد</td>
-                <td width = "15%" >تاریخ ساعت</td>
-                <td width = "15%" >مبلغ کل</td>
-                <td width = "15%" >وضعیت</td>
-                <td width = "15%" >عملیات</td>
-                <td width = "20%" >جزییات</td>
-            </tr>
-            <tr id ="row"  v-for="o in orderarr" :key="o">
-                <td width = "5%" > {{o.index}}</td>
-                <td width = "15%"> {{o.code}}</td>
-                <td width = "15%">{{o.date}}</td>
-                <td width = "15%" >{{o.cost}}</td>
-                <td width = "15%" >{{o.status}}</td>
-                <td width = "15%" ></td>
-                <td width = "20%" ><img src="~/assets/pic/select2.png"/>  </td>
-            </tr>      
-        </table>
+        <div id="orders">
+            <table id = "t2">
+                <tr id="head">
+                    <td width = "5%" >ردیف</td>
+                    <td width = "15%">کد</td>
+                    <td width = "15%" >تاریخ ساعت</td>
+                    <td width = "15%" >مبلغ کل</td>
+                    <td width = "15%" >وضعیت</td>
+                    <td width = "15%" >عملیات</td>
+                    <td width = "20%" >جزییات</td>
+                </tr>
+                <tr id ="row"  v-for="o in orderarr" :key="o">
+                    <td width = "5%" > {{o.index}}</td>
+                    <td width = "15%"> {{o.code}}</td>
+                    <td width = "15%">{{o.date}}</td>
+                    <td width = "15%" >{{o.cost}}</td>
+                    <td width = "15%" >{{o.status}}</td>
+                    <td width = "15%" > <button id ="pay">پرداخت</button> </td>
+                    <td width = "20%" ><img src="~/assets/pic/select2.png"/>  </td>
+                </tr>      
+            </table>
+        </div>
     </div>
 </span>
     
@@ -123,8 +136,15 @@ export default {
             phone2 : '123456',
             idcard : '5030065326',
             toggle1 : 0,
+            toggle2 : 0,
+            h1 : 0,
+            h2 : 0,
+            adrslc : false,
             orderarr :[
-                {'index': 1 , 'code' : 111 ,'date' : '1.2.3' ,'cost' : 1000 ,'status' : 'delivery'}
+                {index : '1' , code : '111' ,date : '1.2.3 ',cost : '1000' ,status : 'delivery'}
+            ],
+            addresses:[ 
+                {name : 'maryam' , phone1 :'1234' ,phone2:'8765' ,address : 'yazd' ,code:'766'}
             ],
 
 
@@ -132,17 +152,41 @@ export default {
     },
     methods: {
          select1 : function(ev){  
-          if (this.toggle1  == 1) {       
+          if (this.toggle1  == 0) {       
                 document.getElementById("addreses").style.visibility = "hidden";
-                document.getElementById("addreses").style.height = "0px";
-                this.toggle1 = 0;
+                this.h1 =  document.getElementById("addreses").style.height ;
+                 document.getElementById("addreses").style.height = "0px";
+                this.toggle1 = 1;
                 //bayad inja on aksa ham avaz beshe badan ishala
             } else{
                 document.getElementById("addreses").style.visibility = "visible";
-                // document.getElementById("addreses").style.height = "200px";
-                this.toggle1 = 1; 
+                document.getElementById("addreses").style.height = this.h1 ;
+                this.toggle1 = 0; 
             }
         },
+        select2 : function(ev){  
+          if (this.toggle2  == 0) {       
+                document.getElementById("orders").style.visibility = "hidden";
+                this.h2 =  document.getElementById("orders").style.height  ;
+                document.getElementById("orders").style.height = "0px";
+                this.toggle2 = 1;
+                //bayad inja on aksa ham avaz beshe badan ishala
+            } else{
+                document.getElementById("orders").style.visibility = "visible";
+                document.getElementById("orders").style.height = this.h2 ;
+                this.toggle2 = 0; 
+            }
+        },
+        setaddres:function(){
+            //ajax to server which our addres is this
+            if (!this.adrslc){
+                this.adrslc = true; 
+            }
+            else{
+                this.adrslc = false;               
+            }
+             
+        }
       
         
     }
@@ -261,12 +305,14 @@ export default {
         height: 35px;
         margin-top: 10px;
     }
-    #addreses{
-        /* height: 0px;
-        visibility: hidden; */
-        background-color: aqua;
-        height: 100px;;
+    /* #addreses{
+        height: 0px;
+        visibility: hidden;
     }
+    #orders{
+        height: 0px;
+        visibility: hidden;
+    } */
     #t{
         height: 90px;
         border: solid;
@@ -284,9 +330,12 @@ export default {
         text-align: right;       
     }
     #t2{
-        width: 100%;
+        width: 90%;
+        margin: auto auto;
         text-align: center;
+           
     }
+   
     #head{
         background-color: rgb(208, 212, 211);
         border: none;
@@ -298,8 +347,27 @@ export default {
     }
     #row{
         background-color: rgb(220, 228, 228);
-        width: 100%;
-        margin-top: 2px;
+        width: 90%;
+        margin: auto auto;
+    }
+    #pay{
+        background-color: blue;
+        width: 60%;;
+        border-radius: 15px;
+        color: white;
+        border: none;
+    }
+    .t1{
+        text-align: right;
+        border: solid 2px;
+        /* border-color: red; */
+        width: 90%;
+        margin: auto auto;
+        margin-bottom: 10px;
+    }
+    
+    .atd{
+        border: solid rgb(146, 144, 148);
     }
    
 </style>

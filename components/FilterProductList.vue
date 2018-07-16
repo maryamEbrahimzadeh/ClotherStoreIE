@@ -48,42 +48,48 @@ export default {
             toggle1 : 0,
             toggle2 : 0,
             toggle3 : 0,
+            h1 : 0 ,
+            h2 : 0 ,
+            h3 : 0 ,
         }
     },
     methods: {
       select1 : function(ev){  
           if (this.toggle1  == 1) {       
                 document.getElementById("categories").style.visibility = "hidden";
+                this.h1 = document.getElementById("categories").style.height;
                 document.getElementById("categories").style.height = "0px";
                 this.toggle1 = 0;
                 //bayad inja on aksa ham avaz beshe badan ishala
             } else{
                 document.getElementById("categories").style.visibility = "visible";
-                document.getElementById("categories").style.height = "100px";
+                document.getElementById("categories").style.height = this.h1;
                 this.toggle1 = 1; 
             }
         },
         select2 : function(ev){  
           if (this.toggle2  == 1) {       
                 document.getElementById("brands").style.visibility = "hidden";
+                this.h2 = document.getElementById("brands").style.height ;
                 document.getElementById("brands").style.height = "0px";
                 this.toggle2 = 0;
                 //bayad inja on aksa ham avaz beshe badan ishala
             } else{
                 document.getElementById("brands").style.visibility = "visible";
-                document.getElementById("brands").style.height = "100px";
+                document.getElementById("brands").style.height = this.h2;
                 this.toggle2 = 1; 
             }
         },
         select3 : function(ev){  
           if (this.toggle3  == 1) {       
                 document.getElementById("colors").style.visibility = "hidden";
+                this.h3 = document.getElementById("colors").style.height ;
                 document.getElementById("colors").style.height = "0px";
                 this.toggle3 = 0;
                 //bayad inja on aksa ham avaz beshe badan ishala
             } else{
                 document.getElementById("colors").style.visibility = "visible";
-                document.getElementById("colors").style.height = "100px";
+                document.getElementById("colors").style.height = this.h3;
                 this.toggle3 = 1; 
             }
         }
