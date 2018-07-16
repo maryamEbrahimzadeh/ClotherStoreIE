@@ -1,19 +1,18 @@
-
 <template>
     <div class="c">
         hiiiiiiiiii
-        <table  id = "t" width="80%" border="1"  >
+        <table  id = "t"  >
             <tr>
                 <td width="5%">*</td>
-                <td width="20%">شماره تلفن همراه : </td>
-                <td width="30%">شماره تلفن ثابت</td>
-                <td width="20%">تحویل گیرنده</td>
+                <td width="20%">شماره تلفن همراه : {{phone2}} </td>
+                <td width="30%">شماره تلفن ثابت : {{phone1}} </td>
+                <td width="20%">تحویل گیرنده: {{name}} </td>
                 <td rowspan="2"  width="5%">'**'</td>
             </tr>
             <tr>
                 <td width="5%">*</td>
-                <td width="20%">کد پستی</td>
-                <td  class="2" width="30%">آدرس :</td>
+                <td width="20%">کد پستی : {{code}}</td>
+                <td  class="2" width="30%">آدرس :{{address}}} </td>
             </tr>
         </table>
     </div>
@@ -22,16 +21,14 @@
 
 <script>
 export default {
-    // props : ['name','phone1','phone2','address','code'],
+    props : ['name','phone1','phone2','address','code'],
     data() {
-        return {
-            
+        return {          
 
 
         }
     },
-    methods: {
-         
+    methods: {         
       
         
     }
@@ -44,7 +41,8 @@ export default {
         src: url(~/assets/font/Shabnam-light.woff);
     }
     .c{
-        height: 100px;
+        height: 200px;
+        width: 400px;
         background-color: red;
     }
    #t{

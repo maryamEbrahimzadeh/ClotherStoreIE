@@ -69,10 +69,36 @@
         <div id="addrhead" v-on:click="select1($event)" >آدرس ها</div>
         <hr/>
         <div id="addreses">
-          <address />  
+          <!-- <address  id="t" v-bind:name='maryam' v-bind:code="123456" v-bind:phone1="123" v-bind:phone2="987" 
+          v-bind:address="yazd"></address>   -->
+          <address/>
         </div>
         <button id="addaddress" v-on:click="add_address()" >اضافه کردن آدرس جدید</button>
+    </div>
 
+    <div  id= "order">
+        <div id="orderhead" v-on:click="select2($event)" >سفارش ها</div>
+        <hr/>
+        <table id = "t2">
+            <tr id="head">
+                <td width = "5%" >ردیف</td>
+                <td width = "15%">کد</td>
+                <td width = "15%" >تاریخ ساعت</td>
+                <td width = "15%" >مبلغ کل</td>
+                <td width = "15%" >وضعیت</td>
+                <td width = "15%" >عملیات</td>
+                <td width = "20%" >جزییات</td>
+            </tr>
+            <tr id ="row"  v-for="o in orderarr" :key="o">
+                <td width = "5%" > {{o.index}}</td>
+                <td width = "15%"> {{o.code}}</td>
+                <td width = "15%">{{o.date}}</td>
+                <td width = "15%" >{{o.cost}}</td>
+                <td width = "15%" >{{o.status}}</td>
+                <td width = "15%" ></td>
+                <td width = "20%" ><img src="~/assets/pic/select2.png"/>  </td>
+            </tr>      
+        </table>
     </div>
 </span>
     
@@ -80,7 +106,7 @@
 
 <script>
 
-import address from '~/components/address';
+import address from '~/components/address.vue';
 export default {
     components: {
         address,
@@ -97,6 +123,9 @@ export default {
             phone2 : '123456',
             idcard : '5030065326',
             toggle1 : 0,
+            orderarr :[
+                {'index': 1 , 'code' : 111 ,'date' : '1.2.3' ,'cost' : 1000 ,'status' : 'delivery'}
+            ],
 
 
         }
@@ -222,19 +251,55 @@ export default {
         
     }
     #addaddress{
-        width: 20%;
+        font: myFirstFont;
+        width: 23%;
         background-color: blue;
         color: white;
         border-radius: 15px;
         border: none;
         margin-left: 5%;
         height: 35px;
+        margin-top: 10px;
     }
     #addreses{
         /* height: 0px;
         visibility: hidden; */
         background-color: aqua;
         height: 100px;;
+    }
+    #t{
+        height: 90px;
+        border: solid;
+    }
+    #order{
+        margin-right: 40px;
+        margin-left: 15px;
+        margin-top: 30px;
+    }
+    #orderhead{
+        background-image: url('~/assets/pic/select2.png');
+        background-repeat: no-repeat;
+        background-position:   left 2px center;
+        width: 15%;
+        text-align: right;       
+    }
+    #t2{
+        width: 100%;
+        text-align: center;
+    }
+    #head{
+        background-color: rgb(208, 212, 211);
+        border: none;
+    }
+    #oitem{
+        text-align: center;
+        width: 100%;
+        background-color: red;
+    }
+    #row{
+        background-color: rgb(220, 228, 228);
+        width: 100%;
+        margin-top: 2px;
     }
    
 </style>
