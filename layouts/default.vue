@@ -1,9 +1,12 @@
 <template>
   <div class="main">
-    <main-navbar  @islogin="changecomp"  @query="changePageProductList" @targetId="changePageProductList"/>
-    <nuxt v-if="!logedin" />
-    <slider-home-page v-if="logedin"/>
-    <news v-if="logedin"/>
+    <main-navbar  @islogin="changecomp"   @query="changePageProductList" @targetId="changePageProductList"
+     v-bind:numberoforder=this.numberoforder  @profile="profilePage"  @username="setusername"/>
+
+    <nuxt v-show="!this.logedin  && !this.showprof" />
+    <slider-home-page v-show="this.logedin  && !this.showprof"/>
+    <news  v-show="this.logedin  && !this.showprof"/>
+    <profile-comp  v-bind:username=this.username v-show="this.showprof" />
     <Footer />
   </div>
 </template>
@@ -13,27 +16,43 @@ import Footer from '~/components/Footer';
 import MainNavbar from '~/components/MainNavbar';
 import News from '~/components/News';
 import SliderHomePage from '~/components/SliderHomePage';
+import ProfileComp from '~/components/ProfileComp';
 export default {
     components: {
       Footer,
       MainNavbar,
       News,
-      SliderHomePage
+      SliderHomePage,
+      ProfileComp
 
     },
     data() {
         return {
-            logedin :false,
+            logedin : false,
+            numberoforder : 0,
+            username : 'ali',
+            showprof : false,
         }
     },
     
     methods: {
-        changecomp:function(status){
-            this.logedin = status;
-        }
-        ,changePageProductList:function(query){
+        changePageProductList:function(query){
             //change page
-            this.$router.push(`ProductList/${query}`);
+            // alert(query);
+            this.$router.push(`/ProductList/${query}`);
+        },
+        profilePage:function(s){
+            // this.$router.push(`Profile/${this.username}`);
+            // alert(s);
+            this.showprof = s;
+            // alert(this.showprof);
+
+        },
+        setusername:function(u){
+            this.username = u;
+        },
+        changecomp:function(status){            
+            this.logedin = status;
         }
     }
   

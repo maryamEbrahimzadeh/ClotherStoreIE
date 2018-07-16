@@ -1,18 +1,19 @@
 <template>
     <div>
         <span class="reg">
-            <a id="nameandfamily">
+            <a id="nameandfamily" v-on:click="profile($event)">
                  {{username}}
                  <!-- مریم -->
-                 <!-- <a id ="nameimg"></a> -->
+                 <img id ="nameimg"/>
             </a>
             <a id = "basket">
                 سبد خرید
-                <!-- <a id="basketimg"></a> -->
+                {{numberoforder}}
+                <img id="basketimg"/>                
             </a>
             <a id = "order">
                 پیگیری سفارش
-                <!-- <a id="orderimg"></a> -->
+                <img id="orderimg"/>
             </a>
         </span>
         
@@ -22,7 +23,24 @@
 <script>
 
 export default {
-   props: ['username'],
+   props: ['username','numberoforder'],
+    data() {
+        return {
+            proftoggle : 0,
+        }
+    },
+   methods: {
+        profile: function(event) {            
+            // this.$router.push(`Profile/${this.username}`);  
+            if ( this.proftoggle==0) {
+                 this.$emit('profile', true);
+                 this.proftoggle =  1;
+            } else {
+                this.$emit('profile', false);
+                this.proftoggle = 0;
+            }
+        }
+   }
 }
 </script>
 
@@ -46,25 +64,51 @@ export default {
         flex :1 0 auto;  
         margin-right: 4px;
         margin-left: 4px;
+        /* width: 50px;
+        height: 50px; */
+        /* background-image: url('~/assets/pic/select2.png');
+        background-repeat: no-repeat;
+        background-position: left  center; */
+    }
+    #nameimg{     
+        height: 20px;
+        width: 20px;   
         background-image: url('~/assets/pic/select2.png');
         background-repeat: no-repeat;
-        background-position: left  center;
+        background-position:   center;
+        border: none;
     }
      #basket{
         flex : 1 0 auto;
         margin-right: 4px;
         margin-left: 4px;
+        /* background-image: url('~/assets/pic/basket.png');
+        background-repeat: no-repeat;
+        background-position: left  center; */
+    }
+    #basketimg{
+        height: 20px;
+        width: 20px;   
         background-image: url('~/assets/pic/basket.png');
         background-repeat: no-repeat;
-        background-position: left  center;
+        background-position:   center;
+        border: none;
     }
     #order{
         flex :1 0 auto;
         margin-right: 4px;
         margin-left: 4px;
+        /* background-image: url('~/assets/pic/list.png');
+        background-repeat: no-repeat;
+        background-position: left  center; */
+    }
+    #orderimg{
+        height: 20px;
+        width: 20px;   
         background-image: url('~/assets/pic/list.png');
         background-repeat: no-repeat;
-        background-position: left  center;
+        background-position:   center;
+        border: none;
     }
 
        

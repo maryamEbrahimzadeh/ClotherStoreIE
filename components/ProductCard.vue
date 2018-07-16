@@ -3,6 +3,7 @@
         <img id= "img" v-on:click="toDetail" :src = this.imgsrc  />
         <br/>
         {{name}}
+        {{imgsrc}}
         <br/>
         {{brandname}}
         <br/>
@@ -26,11 +27,13 @@ export default {
         }
     },
     methods: {
+
         toDetail: function(){
            this.$router.push(`/productDetail/${this.name}`);
            
        }
-    }
+
+     
 }
 </script>
 

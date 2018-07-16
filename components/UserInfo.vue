@@ -51,7 +51,10 @@
 </template>
 
 <script>
+import createStore from '../store';
+
 export default {
+
     data () {
     return {
       name: '',
@@ -74,10 +77,12 @@ export default {
         this.handleSubmit()
       }
     },handleSubmit () {
-    this.$emit('islogin', true);
-    this.$emit('username',this.name);
-    this.clearName()
-    this.$refs.modal.hide()
+        // alert("hi");
+        // alert(createStore.state.is_login);
+        this.$emit('islogin', true);
+        this.$emit('username',this.name);
+        this.clearName()
+        this.$refs.modal.hide()
     },
     handleOk2 (evt) {
       // Prevent modal from closing

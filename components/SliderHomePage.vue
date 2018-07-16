@@ -37,15 +37,19 @@
 <script>
 export default {
   data () {
-      slide = 0,
-      sliding = null
+
+      return{
+        
+      sliding :null,
+      slide : 0,
+      }
     
   },
   methods: {
-    onSlideStart (slide) {
+    onSlideStart () {
       this.sliding = true
     },
-    onSlideEnd (slide) {
+    onSlideEnd () {
       this.sliding = false
     }
   }
