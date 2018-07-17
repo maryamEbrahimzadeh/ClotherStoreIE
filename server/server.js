@@ -1,10 +1,17 @@
-import mongoose from 'mongoose';
-import bodyParser from 'body-parser';
-import shopRouter from 'route.js';
-import express from 'express';
+const express = require("express");
+// import express from 'express';
+const mongoose = require("mongoose");
+// import mongoose from 'mongoose';
+const bodyParser = require("body-parser");
+const shopRouter = require("./route.js");
+// import bodyParser from 'body-parser';
+// import shopRouter from 'route.js';
+
+const db = mongoose.connect('mongodb://maryam:m123456@ds018238.mlab.com:18238/shop');
+
 const app = express();
-const port = process.env.PORT || 5656;
-const db = mongoose.connect('mongodb://<maryam.eb>:<m123456>@ds125068.mlab.com:25068/api-test2');
+const port =  5656;
+
 
 
 // routes go here
