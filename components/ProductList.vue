@@ -17,7 +17,7 @@
         <hr/>
         <div id = "products">
             <span id= "item" v-for="p in products" :key="p" >
-                 <product-card id="item" :imgsrc="p.src" :name="p.name"  :brandname="p.brand"  :cost1="p.cost1" :cost2="p.cost2"  />
+                 <product-card  :imgsrc="p.src" :name="p.name"  :brandname="p.brand"  :cost1="p.cost1" :cost2="p.cost2" :id="p.id" />
             </span>
         </div>
     </div>
@@ -40,7 +40,7 @@ export default {
             selectedProduct:[],
             products:[
                 {src : '~/assets/pic/magnifying-glass2.png', name : 'mobile',
-            brand : 'sony', cost1 :2000, cost2 : 1000} 
+            brand : 'sony', cost1 :2000, cost2 : 1000, id:1} 
             ],//ajax fot complete it
         }
     },

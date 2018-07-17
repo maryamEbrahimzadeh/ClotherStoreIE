@@ -9,12 +9,9 @@
 
 
 export default {
-    layout : 'ProfileLayout',
+    layout : 'ShoppingBagLayout',
     methods: {
 
-
-
-      
     },
     
 }

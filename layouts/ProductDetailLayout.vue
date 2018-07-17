@@ -3,44 +3,31 @@
     <main-navbar   />
     <div class ="flex">
     <div id="proImgs">
-        <!-- <b-form-slider :value="value"/> -->
-        <img id="img" src="https://picsum.photos/1024/480/?image=58">
+        <img id="img" :src="this.imgsrc">
     </div> 
 
     <div id="left">
-        <p class="brand">نام برند</p>
-        <p class="product">نام محصول</p>
-        <p class="cost">قیمت</p>
-        <p class="color">رنگ</p>
+        <p class="brand">{{product.brand}}</p>
+        <p class="product">{{product.name}}</p>
+        <div class="cost">
+            <span id="cost1">{{this.product.cost1}}</span>
+            <span id="cost2">{{this.product.cost2}}</span>
+        </div>
+        <p class="color" v-for="p in product.color" :key="p">
+              رنگ:   {{p}}</p>
         <div>
-            <b-carousel id="carousel1"
-                style="text-shadow: 1px 1px 2px #333;"
-                controls
-                indicators
-                background="#ababab"
-                :interval="4000"
-                v-model="slide"
-                @sliding-start="onSlideStart"
-                @sliding-end="onSlideEnd"
-    >
-
-            <b-carousel-slide class ="slide" img-src="https://picsum.photos/1024/480/?image=54"  >
-            </b-carousel-slide>
-
-            <b-carousel-slide class ="slide" img-src="https://picsum.photos/1024/480/?image=54" >
-            </b-carousel-slide>
-
-            <b-carousel-slide class ="slide" img-src="https://picsum.photos/1024/480/?image=54" >
-            </b-carousel-slide>
-
-    </b-carousel>
+       <carousel id="carous" :per-page="1"  mouse-drag=true navigationEnabled=true spacePadding:0 
+        v-for="p in product.src" :key="p">
+            <slide @slideClick="handleSlideClick"> 
+            <img id="img"  :src="p.src" width="50px" height="50px">
+            </slide>
+        </carousel>
             
         </div>
         <div id="select">
-            <select id="sel" name="" v-model="choose">
+            <select id="sel" name="" v-model="choose" v-for="p in product.size" :key="p">
                 <option >انتخاب کنید</option>
-                <option >آبی 42</option>
-                <option >سفید 50</option>
+                <option >{{p}}</option>
             </select>
             <a id="a" href="">راهنمای سایز</a>
         </div>
@@ -83,7 +70,7 @@ import Footer from '~/components/Footer';
 import MainNavbar from '~/components/MainNavbar';
 import productProperty from '~/components/productProperty';
 import relatedProducts from '~/components/relatedProducts';
-
+import { Carousel, Slide } from 'vue-carousel';
 // import 'swiper/dist/css/swiper.css';
 // import { swiper, swiperSlide } from 'vue-awesome-swiper';
 
@@ -93,16 +80,23 @@ export default {
       MainNavbar,
       productProperty,
       relatedProducts,
+      Carousel,
+      Slide
     //   swiper,
     //   swiperSlide
 
     },
      data() {
             return {
+                //productProps: [{brand: 'GLX', cost1: 100, cost2: 200, color:'مشکی',size:{s:10,s:20,s:30}}],
+                product:
+                {src :['~/assets/pic/magnifying-glass2.png' ] , name : 'mobile',
+                brand : 'sony', cost1 :2000, cost2 : 1000, color:['مشکی'], size:['small']} ,
                 choose: '',
                 threeFisrtProps: [{p:'آستین کوتاه'},{p:'یقه گرد'},{p:'الیاف نخی'}],
                 brandProperty: [{p:'پارچه طرح دار'}],
-                 toggle: 0
+                toggle: 0,
+                imgsrc: '',
         }
 
     },
@@ -131,6 +125,9 @@ export default {
                 document.getElementById("ulhide").style.height = "100px";
                 this.toggle = 1; 
             }
+        },
+        handleSlideClick() {
+            this.imgsrc = document.getElementById("img").src
         }
       
     }
@@ -254,5 +251,16 @@ export default {
         font-family: myFirstFont;
         text-align: right;
         visibility: hidden;
+    }
+    #cost2 {
+        text-decoration: line-through;
+    }
+    #cost1 {
+        color: crimson;
+        margin-right: 30px;
+    }
+    #carous {
+        width: 200px;
+        height: 50px;
     }
 </style>

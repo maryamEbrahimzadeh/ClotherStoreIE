@@ -6,7 +6,7 @@
                  <!-- مریم -->
                  <img id ="nameimg"/>
             </a>
-            <a id = "basket">
+            <a id = "basket" v-on:click="shopbag($event)">
                 سبد خرید
                 {{numberoforder}}
                 <img id="basketimg"/>                
@@ -39,6 +39,9 @@ export default {
                 this.$emit('profile', false);
                 this.proftoggle = 0;
             }
+        },
+        shopbag: function(event) {
+            this.$router.push(`ShoppingBag/${this.username}`);
         }
    }
 }

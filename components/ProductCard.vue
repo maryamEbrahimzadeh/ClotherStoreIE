@@ -20,21 +20,21 @@
 
 <script>
 export default {
-    props:['imgsrc','name','brandname','cost1','cost2'],
+    props:['imgsrc','name','brandname','cost1','cost2','id'],
     data() {
         return {
             
         }
     },
     methods: {
-
         toDetail: function(){
-           this.$router.push(`/productDetail/${this.name}`);
+           this.$router.push(`/productDetail/${this.id}`);
            
        }
-
-     
+    }
 }
+     
+
 </script>
 
 <style scoped>
