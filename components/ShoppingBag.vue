@@ -42,7 +42,7 @@ export default {
     data(){
         return{
             products: [
-                    {src :'~/assets/pic/heart.png' , name : 'mobile',
+                    {src :'/images/magnifying-glass2.png' , name : 'mobile',
                     brand : 'sony', cost1 :2000, cost2 : 1000,totalcost:99, color:'مشکی', size:'small',id: 1}
                     ],
             numberOfOrder: 1

@@ -26,15 +26,15 @@
        <div id = "center">
            {{username}}
            <br/>
-           <!-- <img id="img" :src=this.src /> -->
+           <img id="img" :src=this.src />
            <br/>
            <br/>
            جنسیت
            <div id ="jens">
                <div  class="s" id ="man" >مرد</div>
-               <div  class="s"  id= "manimg" ></div>
-               <div  class="s"   id = "zanimg"></div>
-               <div  class="s"  id= "zan" >زن</div>
+               <div  class="s" id= "manimg" ></div>
+               <div  class="s" id = "zanimg"></div>
+               <div  class="s" id= "zan" >زن</div>
            </div>
            رمز عبور جدید
            <br/>
@@ -65,70 +65,37 @@
            <input type="password" class = "item" id="conf"  />
        </div>        
     </div>
-    <div  id= "address">
-        <div id="addrhead" v-on:click="select1($event)" >آدرس ها</div>
-        <hr/>
-        <div id="addreses">
-            <table  class = "t1"  v-for="a in addresses" :key="a"   v-bind:style= "[adrslc ? {'border-color' : 'rgb(0, 217, 255)'} : {'border-color' : 'rgb(146, 144, 148)'}]">
-                <tr>
-                    <td class="atd" rowspan="2"  width="3%" v-on:click="setaddres()">'**'</td>     
-                    <td class="atd"  width="20%">تحویل گیرنده: {{a.name}} </td>  
-                    <td class="atd"  width="30%">شماره تلفن ثابت : {{a.phone1}} </td>
-                    <td class="atd"  width="20%">شماره تلفن همراه : {{a.phone2}} </td>
-                    <td class="atd"  width="5%">*</td>               
-                </tr>
-                <tr>
-                    <td class="atd"   colspan="2" width="30%">آدرس :{{a.address}} </td>                
-                    <td class="atd"  width="20%">کد پستی : {{a.code}}</td>
-                    <td class="atd"  width="5%">*</td>
-                </tr>
-            </table>
-            <button id="addaddress" v-on:click="add_address()" >اضافه کردن آدرس جدید</button>
-        </div>
+    <div id="addrhead" v-on:click="select1($event)" >آدرس ها</div>
+    <hr/>
+    <div id= "address">
+        <send-detail />
     </div>
-
-    <div  id= "order">
-        <div id="orderhead" v-on:click="select2($event)" >سفارش ها</div>
-        <hr/>
-        <div id="orders">
-            <table id = "t2">
-                <tr id="head">
-                    <td width = "5%" >ردیف</td>
-                    <td width = "15%">کد</td>
-                    <td width = "15%" >تاریخ ساعت</td>
-                    <td width = "15%" >مبلغ کل</td>
-                    <td width = "15%" >وضعیت</td>
-                    <td width = "15%" >عملیات</td>
-                    <td width = "20%" >جزییات</td>
-                </tr>
-                <tr id ="row"  v-for="o in orderarr" :key="o">
-                    <td width = "5%" > {{o.index}}</td>
-                    <td width = "15%"> {{o.code}}</td>
-                    <td width = "15%">{{o.date}}</td>
-                    <td width = "15%" >{{o.cost}}</td>
-                    <td width = "15%" >{{o.status}}</td>
-                    <td width = "15%" > <button id ="pay">پرداخت</button> </td>
-                    <td width = "20%" ><img src="~/assets/pic/select2.png"/>  </td>
-                </tr>      
-            </table>
-        </div>
+    <div id="orderhead" v-on:click="select2($event)" >سفارش ها</div>
+    <hr/>
+    <div id= "order">
+        <orders />
     </div>
+    <shopping-bag />
 </span>
     
 </template>
 
 <script>
+import sendDetail from '~/components/sendDetail';
+import orders from '~/components/orders';
+import ShoppingBag from '~/components/ShoppingBag';
 
-import address from '~/components/address.vue';
 export default {
     components: {
-        address,
+        sendDetail,
+        orders,
+        ShoppingBag,
     },
     props : ['username'],
     data() {
         return {
             name : 'maryam',
-            src : '~/assets/pic/magnifying-glass1.png',
+            src : '/images/avatar.jpg',
             phone:'123456' ,
             birth:'',
             pass:'123',
@@ -139,55 +106,36 @@ export default {
             toggle2 : 0,
             h1 : 0,
             h2 : 0,
-            adrslc : false,
-            orderarr :[
-                {index : '1' , code : '111' ,date : '1.2.3 ',cost : '1000' ,status : 'delivery'}
-            ],
-            addresses:[ 
-                {name : 'maryam' , phone1 :'1234' ,phone2:'8765' ,address : 'yazd' ,code:'766'}
-            ],
-
-
+  
         }
     },
     methods: {
          select1 : function(ev){  
           if (this.toggle1  == 0) {       
-                document.getElementById("addreses").style.visibility = "hidden";
-                this.h1 =  document.getElementById("addreses").style.height ;
-                 document.getElementById("addreses").style.height = "0px";
+                document.getElementById("address").style.visibility = "hidden";
+                this.h1 =  document.getElementById("address").style.height ;
+                 document.getElementById("address").style.height = "0px";
                 this.toggle1 = 1;
                 //bayad inja on aksa ham avaz beshe badan ishala
             } else{
-                document.getElementById("addreses").style.visibility = "visible";
-                document.getElementById("addreses").style.height = this.h1 ;
+                document.getElementById("address").style.visibility = "visible";
+                document.getElementById("address").style.height = this.h1 ;
                 this.toggle1 = 0; 
             }
         },
         select2 : function(ev){  
           if (this.toggle2  == 0) {       
-                document.getElementById("orders").style.visibility = "hidden";
-                this.h2 =  document.getElementById("orders").style.height  ;
-                document.getElementById("orders").style.height = "0px";
+                document.getElementById("order").style.visibility = "hidden";
+                this.h2 =  document.getElementById("order").style.height  ;
+                document.getElementById("order").style.height = "0px";
                 this.toggle2 = 1;
                 //bayad inja on aksa ham avaz beshe badan ishala
             } else{
-                document.getElementById("orders").style.visibility = "visible";
-                document.getElementById("orders").style.height = this.h2 ;
+                document.getElementById("order").style.visibility = "visible";
+                document.getElementById("order").style.height = this.h2 ;
                 this.toggle2 = 0; 
             }
         },
-        setaddres:function(){
-            //ajax to server which our addres is this
-            if (!this.adrslc){
-                this.adrslc = true; 
-            }
-            else{
-                this.adrslc = false;               
-            }
-             
-        }
-      
         
     }
 }
@@ -268,10 +216,10 @@ export default {
         text-align: left;      
     }
     #manimg{
-        background-image: url('~/assets/pic/basket.png');
+        background-image: url('/images/male.png');
     }
     #zanimg{
-        background-image: url('~/assets/pic/list.png');
+        background-image: url('/images/female.png');
     }
     #change{
         background-color: blue;
@@ -280,30 +228,6 @@ export default {
         border-radius: 15px;
         margin: auto auto;
         margin-top: 20px;
-    }
-    #address{
-        margin-right: 40px;
-        margin-left: 15px;
-        margin-top: 30px;
-    }
-    #addrhead{
-        background-image: url('~/assets/pic/select2.png');
-        background-repeat: no-repeat;
-        background-position:   left 2px center;
-        width: 15%;
-        text-align: right;
-        
-    }
-    #addaddress{
-        font: myFirstFont;
-        width: 23%;
-        background-color: blue;
-        color: white;
-        border-radius: 15px;
-        border: none;
-        margin-left: 5%;
-        height: 35px;
-        margin-top: 10px;
     }
     /* #addreses{
         height: 0px;
@@ -323,51 +247,30 @@ export default {
         margin-top: 30px;
     }
     #orderhead{
+        font-family: myFirstFont;
         background-image: url('~/assets/pic/select2.png');
         background-repeat: no-repeat;
-        background-position:   left 2px center;
+        background-position:    left 2px center;
         width: 15%;
         text-align: right;       
-    }
-    #t2{
-        width: 90%;
-        margin: auto auto;
-        text-align: center;
-           
-    }
-   
-    #head{
-        background-color: rgb(208, 212, 211);
-        border: none;
     }
     #oitem{
         text-align: center;
         width: 100%;
         background-color: red;
     }
-    #row{
-        background-color: rgb(220, 228, 228);
-        width: 90%;
-        margin: auto auto;
+    #address{
+        margin-right: 40px;
+        margin-left: 15px;
+        margin-top: 30px;
     }
-    #pay{
-        background-color: blue;
-        width: 60%;;
-        border-radius: 15px;
-        color: white;
-        border: none;
-    }
-    .t1{
-        text-align: right;
-        border: solid 2px;
-        /* border-color: red; */
-        width: 90%;
-        margin: auto auto;
-        margin-bottom: 10px;
-    }
-    
-    .atd{
-        border: solid rgb(146, 144, 148);
+    #addrhead{
+        font-family: myFirstFont;
+        background-image: url('~/assets/pic/select2.png');
+        background-repeat: no-repeat;
+        background-position:   left 2px center;
+        width: 15%;
+        text-align: right;   
     }
    
 </style>

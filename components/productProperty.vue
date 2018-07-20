@@ -6,8 +6,9 @@
         </div>
         <br>
         <div class= "item" v-for="p in productProps" :key="p" >
-                <div class="i" >
+                <div class="i" v-bind:style="{backgroundColor: picker()}">
                 p                {{p.p}}
+                <br/>
                 </div>
         </div>
         <br>
@@ -18,8 +19,20 @@
 export default {
     data() {
         return{
-            productProps:[{p : 'value'}],
-        
+            productProps:[{p : 'value'},{p : 'value1'},{p : 'value2'}],
+            toggle: false
+        }
+    },
+    methods: {
+        picker() {
+            if (!this.toggle){
+                this.toggle = true; 
+                return 'lightblue';
+            }
+            else{
+                this.toggle = false;  
+                return 'white';             
+            }
         }
     }
 }

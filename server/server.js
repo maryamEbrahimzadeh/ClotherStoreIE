@@ -7,7 +7,7 @@ const shopRouter = require("./route.js");
 // import bodyParser from 'body-parser';
 // import shopRouter from 'route.js';
 
-const db = mongoose.connect('mongodb://maryam:m123456@ds018238.mlab.com:18238/shop');
+const db = mongoose.connect('mongodb://maryam:m123456@ds018238.mlab.com:18238/shop',{useNewUrlParser: true});
 
 const app = express();
 const port =  5656;
@@ -22,3 +22,5 @@ app.listen(port, () => {
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use('/' , shopRouter);
+
+// console.log(`gereftam`);

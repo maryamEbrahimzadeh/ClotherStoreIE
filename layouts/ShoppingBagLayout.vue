@@ -3,16 +3,26 @@
     <main-navbar  v-bind:login="true"  @query="changePageProductList" @targetId="changePageProductList"  />
     <div class="imgs">
         <img class="img" src='~/assets/pic/shop.png'>
-        <img class="img" src='~/assets/pic/send.png' >
+        <img class="img" id="send" src='~/assets/pic/send.png' >
         <img class="img" src='~/assets/pic/money.png'>
     </div>
     <div class="spns">
         <span class="sp" id="sabad">سبد خرید</span>
-        <span class="sp">اطلاعات ارسال</span>
+        <span class="sp" id="sendInfo">اطلاعات ارسال</span>
         <span class="sp">جزئیات پرداخت</span>
     </div>
-    <shopping-bag />
-    <button id="button" type="submit">ثبت و مرحله بعد</button>
+    <div id="shoppingBag">
+        <shopping-bag />
+    </div>
+    <div id="sendDetail">
+        <p>هزینه ارسال</p>
+        <send-detail />
+        <p>زمان دریافت سفارش</p>
+        <select name="" id="">
+            <option value="">روز دریافت 11/7/97  ساعت 15تا20</option>
+        </select>
+    </div>
+    <button id="button" type="submit" @click="goToSendDetail">ثبت و مرحله بعد</button>
     <Footer />
   </div>
 </template>
@@ -21,18 +31,22 @@
 import Footer from '~/components/Footer';
 import MainNavbar from '~/components/MainNavbar';
 import ShoppingBag from '~/components/ShoppingBag';
+import sendDetail from '~/components/sendDetail';
 
 export default {
     components: {
       Footer,
       MainNavbar,
       ShoppingBag,
-
+      sendDetail,
+    
     },
     data() {
         return {           
             username : this.$route.params.username, 
+            
         }
+
     },
     
     methods: {
@@ -40,7 +54,15 @@ export default {
         changePageProductList:function(query){
             //change page
             this.$router.push(`/ProductList/${query}`);
-        }
+        },
+        goToSendDetail() {
+            document.getElementById("shoppingBag").style.visibility = "hidden";
+            document.getElementById("shoppingBag").style.height = "0px";
+            document.getElementById("sendDetail").style.visibility = "visible"
+            document.getElementById("send").src = '/images/sendc.png';
+            document.getElementById("sendInfo").style.color = "mediumturquoise";
+        },
+        
     }
   
 }
@@ -97,5 +119,9 @@ export default {
         margin-left: 350px;
         margin-top: 10px;
     }
+    #sendDetail {
+        visibility: hidden;
+    }
+    
    
 </style>

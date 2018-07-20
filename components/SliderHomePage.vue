@@ -11,18 +11,21 @@
                 @sliding-end="onSlideEnd"
     >
 
-      <b-carousel-slide class ="slide" img-src="https://picsum.photos/1024/480/?image=52">
+      <b-carousel-slide class ="slide" img-src="/images/clothes.jpg" >
       </b-carousel-slide>
 
-      <b-carousel-slide class ="slide" img-src="https://picsum.photos/1024/480/?image=58">
+      <b-carousel-slide class ="slide" img-src="/images/clothes1.jpg">
+      </b-carousel-slide>
+
+      <b-carousel-slide class ="slide" img-src="/images/clothes2.jpg">
       </b-carousel-slide>
 
     </b-carousel>
 
     <div class="image">
-        <img class="img" src="https://picsum.photos/1024/480/?image=54">
-        <img class="img" src="https://picsum.photos/1024/480/?image=54" >
-        <img class="img" src="https://picsum.photos/1024/480/?image=54" >
+        <img class="img" src='~/assets/pic/cloth1.jpg'>
+        <img class="img" src='~/assets/pic/cloth3.jpg' >
+        <img class="img" src='~/assets/pic/cloth2.jpg' >
     </div>
     <div class="categ">
         <p class="cat">مردانه</p>
@@ -70,11 +73,14 @@ export default {
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    margin-left: 200px;
+    margin-right: 200px;
+
 }
 .img{
     display: flex;
     width: 333px;
-    height: 100px;
+    height: 150px;
 }
 .categ{
     display: flex;

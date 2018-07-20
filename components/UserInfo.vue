@@ -36,13 +36,13 @@
                 <b-form-input id= "input"
                             type="text"
                             placeholder="برای مثال maryam.ebrahimzadeh@yahoo.com"
-                            v-model="name">
+                            v-model="name1">
                 </b-form-input>
                 <p id="title"> رمز عبور</p>             
                 <b-form-input id= "input"
                             type="text"
                             placeholder=""
-                            v-model="pass">
+                            v-model="pass1">
                 </b-form-input>
             </form>
             <b-btn id="register" @click="handleOk2">ثبت نام</b-btn> 
@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import createStore from '../store';
+// import axios from 'axios'
 
 export default {
 
@@ -59,6 +59,8 @@ export default {
     return {
       name: '',
       pass:'',
+      name1: '',
+      pass1:'',
     }
   },
   methods: {
@@ -78,19 +80,30 @@ export default {
       }
     },handleSubmit () {
         // alert("hi");
-        // alert(createStore.state.is_login);
-        this.$emit('islogin', true);
-        this.$emit('username',this.name);
+        alert(state.createStore.is_login);
+        ajaxxxx 
+        axios.post('http://localhost:5656/login' , {'username' : this.nam , 'password' : this.pass  }  )
+        .then ( (res) => {
+            if ( res == true){                
+                this.$emit('islogin', true);
+                this.$emit('username',this.name);
+                $store.commit('login')
+            }
+        })
         this.clearName()
         this.$refs.modal.hide()
     },
     handleOk2 (evt) {
-      // Prevent modal from closing
-      evt.preventDefault()
-    //   cheak it is not repetetive vali velesh kon nemikhad
-    //   add him to db
-    this.clearName()
-    this.$refs.modal.hide()
+        // Prevent modal from closing
+        evt.preventDefault()
+        //   cheak it is not repetetive vali velesh kon nemikhad
+        //   add him to db
+         axios.post('http://localhost:5656/adduser' , {'username' : this.name1 , 'password' : this.pass1   })
+        .then ( (res) => {
+            alert(res);
+         })
+        this.clearName()
+        this.$refs.modal.hide()
     }
     
   }
@@ -173,5 +186,8 @@ export default {
         width: 150px;
         margin-left: 50%;
         margin-right: 50%;
+    }
+    #register {
+        font-family: myFirstFont;
     }
 </style>

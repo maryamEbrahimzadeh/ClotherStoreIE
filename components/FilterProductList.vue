@@ -2,9 +2,9 @@
     <div class = "rightbar">
         <div id ="f1">
             <div id="category" v-on:click="select1($event)" >دسته بندی ها</div>
-            <div id="categories">
+            <div id="categories" v-for="p in categories" :key="p"> 
                 <br/>
-                <a href="#" class="Link">Link 1</a>
+                <a href="#" class="Link">cat: {{categories}}</a>
                 <br/>
                 <a href="#" class="Link">Link 2</a>
                 <br/>
@@ -12,16 +12,20 @@
                 <br/>
             </div>
         </div>
+        
         <div id ="f2">
             <div id="brand" v-on:click="select2($event)" >بر اساس برند</div>
             <div id="brands">
-                <br/>
-                <a href="#" class="Link2">Link 1</a>
-                <br/>
-                <a href="#" class="Link2">Link 2</a>
-                <br/>
-                <a href="#" class="Link2">Link 3</a>
-                <br/>
+                <input id="srch" value="جست و جوی برند">
+                <br>
+                <b-checkbox>برند1</b-checkbox>
+                <br>
+                <b-checkbox>برند2</b-checkbox>
+                <br>
+                <b-checkbox>برند3</b-checkbox>
+                <br>
+                <b-checkbox>برند4</b-checkbox>
+                <br>
             </div>
         </div>
         <div id ="f3">
@@ -41,7 +45,22 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
+    components: {
+        axios
+    },
+    getData() {
+         axios.get(`http://localhost:5656/category`)
+            .then((response) => {
+                this.categories= response.data;
+                console.log(response.data);
+        })
+        
+    // async asyncData () {
+    //     const { data } = await axios.get(`http://localhost:5656/category`)
+    //      return {cats: data.name}
+    },
     props : ['categoryname'],
     data() {
         return {
@@ -51,6 +70,7 @@ export default {
             h1 : 0 ,
             h2 : 0 ,
             h3 : 0 ,
+            categories :[],
         }
     },
     methods: {
@@ -63,20 +83,21 @@ export default {
                 //bayad inja on aksa ham avaz beshe badan ishala
             } else{
                 document.getElementById("categories").style.visibility = "visible";
-                document.getElementById("categories").style.height = this.h1;
+                document.getElementById("categories").style.height = "120px";
                 this.toggle1 = 1; 
             }
+            this.getData();
         },
         select2 : function(ev){  
           if (this.toggle2  == 1) {       
                 document.getElementById("brands").style.visibility = "hidden";
-                this.h2 = document.getElementById("brands").style.height ;
+                // this.h2 = document.getElementById("brands").style.height ;
                 document.getElementById("brands").style.height = "0px";
                 this.toggle2 = 0;
                 //bayad inja on aksa ham avaz beshe badan ishala
             } else{
                 document.getElementById("brands").style.visibility = "visible";
-                document.getElementById("brands").style.height = this.h2;
+                document.getElementById("brands").style.height = "125px";
                 this.toggle2 = 1; 
             }
         },
@@ -89,7 +110,7 @@ export default {
                 //bayad inja on aksa ham avaz beshe badan ishala
             } else{
                 document.getElementById("colors").style.visibility = "visible";
-                document.getElementById("colors").style.height = this.h3;
+                document.getElementById("colors").style.height = "120px";
                 this.toggle3 = 1; 
             }
         }
@@ -107,16 +128,19 @@ export default {
         background-color: white;
     }
     #f1 {
+        font-family: myFirstFont;
         background-color: rgb(230, 240, 240);
         margin: 10px 20px 10px 20px;
         border-radius: 5px;
     }
     #f2 {
+        font-family: myFirstFont;
         background-color: rgb(230, 240, 240);
         margin: 10px 20px 10px 20px;
         border-radius: 5px;
     }
     #f3 {
+        font-family: myFirstFont;
         background-color: rgb(230, 240, 240);
         margin: 10px 20px 10px 20px;
         border-radius: 5px;
@@ -165,6 +189,7 @@ export default {
         text-align: right;
         height: 0px;
         visibility: hidden;
+        padding-right: 20px;
     }
     #colors{
         text-align: right;
@@ -200,5 +225,8 @@ export default {
     }
     #yellow{
         background-color: yellow;
+    }
+    #srch {
+        color: gray;
     }
 </style>

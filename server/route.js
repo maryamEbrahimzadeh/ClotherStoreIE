@@ -7,6 +7,26 @@ const order = require("./orders.js");
 
 const shopRouter = express.Router();
 
+
+shopRouter.route('/adduser')
+    .post((req,res) => {
+        let p = new user({id: 1 , username: req.body.username ,'password' : req.body.password,'islogine':true })
+         p.save();
+    })
+
+shopRouter.route('/login')
+    .post((req, res) => {
+        user.find({'username' :req.body.username}, (err, u) => {
+                    console.log(u)
+                    if( u.password == req.body.password)
+                        res.send(true)
+                    else 
+                        res.send(false)
+            })   
+    })
+
+
+
 shopRouter.route('/homepage')
     .get((req,res) => {
         //http get to homepage
@@ -22,6 +42,7 @@ shopRouter.route('/category')
         category.find({}, (err, cats) => {
             res.send(cats);
         })  
+        // console.log("category")
     })
 //here i tauth i have color brand cost and page and perpage in my body
 shopRouter.route('/product')

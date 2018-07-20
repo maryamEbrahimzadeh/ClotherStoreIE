@@ -3,7 +3,7 @@
         <div id = "name">{{categoryname}}</div>
         <div id = "controlpage">
             <span id = "ordering">
-                محبوب ترین 
+                مرتب سازی 
                 <select>
                     <option value="favorite">محبوب ترین</option>
                 </select>
@@ -39,7 +39,7 @@ export default {
             last : '1',
             selectedProduct:[],
             products:[
-                {src : '~/assets/pic/magnifying-glass2.png', name : 'mobile',
+                {src : '/images/magnifying-glass2.png', name : 'mobile',
             brand : 'sony', cost1 :2000, cost2 : 1000, id:1} 
             ],//ajax fot complete it
         }
