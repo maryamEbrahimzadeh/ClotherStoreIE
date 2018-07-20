@@ -2,9 +2,9 @@
     <div class = "rightbar">
         <div id ="f1">
             <div id="category" v-on:click="select1($event)" >دسته بندی ها</div>
-            <div id="categories" v-for="p in categories" :key="p"> 
+            <div id="categories" v-for="p in cats" :key="p"> 
                 <br/>
-                <a href="#" class="Link">cat: {{categories}}</a>
+                <a href="#" class="Link">cat: {{p}}</a>
                 <br/>
                 <a href="#" class="Link">Link 2</a>
                 <br/>
@@ -55,6 +55,7 @@ export default {
     // async asyncData () {
     //     const { data } = await axios.get(`http://localhost:5656/category`)
     //      return {cats: data.name}
+    // },
     props : ['categoryname'],
     data() {
         return {
@@ -64,12 +65,13 @@ export default {
             h1 : 0 ,
             h2 : 0 ,
             h3 : 0 ,
-            categories :[],
+            cats :[],
         }
     },
     methods: {
       select1 : function(ev){  
-          if (this.toggle1  == 1) {       
+          if (this.toggle1  == 1) {      
+              this.getData(); 
                 document.getElementById("categories").style.visibility = "hidden";
                 this.h1 = document.getElementById("categories").style.height;
                 document.getElementById("categories").style.height = "0px";
@@ -80,7 +82,7 @@ export default {
                 document.getElementById("categories").style.height = "120px";
                 this.toggle1 = 1; 
             }
-            this.getData();
+            // this.getData();
         },
         select2 : function(ev){  
           if (this.toggle2  == 1) {       
@@ -112,6 +114,7 @@ export default {
          axios.get(`http://localhost:5656/category`)
             .then((response) => {
                 this.categories= response.data;
+                console.log("ajax to category");
                 console.log(response.data);
         })
         }

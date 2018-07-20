@@ -10,13 +10,17 @@ const shopRouter = express.Router();
 
 shopRouter.route('/adduser')
     .post((req,res) => {
-        let p = new user({id: 1 , username: req.body.username ,'password' : req.body.password,'islogine':true })
-         p.save();
+        let p = new user({id: 1 , username: req.body.username ,password : req.body.password,'islogine':true })
+         console.log("registered");
+        p.save();
     })
 
 shopRouter.route('/login')
     .post((req, res) => {
-        user.find({'username' :req.body.username}, (err, u) => {
+        user.findOne({'username' :req.body.username}, (err, u) => {
+                    console.log(req.body.password)
+                    console.log("logged in")
+                    console.log(u.password)
                     console.log(u)
                     if( u.password == req.body.password)
                         res.send(true)

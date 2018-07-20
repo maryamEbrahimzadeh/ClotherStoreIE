@@ -43,8 +43,9 @@ export default {
     methods: {
          changePageProductList:function(query){
             //change page
-            alert(query);
+            // alert(query);
             this.$router.push(`/ProductList/${query}`);
+            this.categoryname = this.$route.params.Category;
         },
         changenumorder:function(n){
             this.numberoforder = n;

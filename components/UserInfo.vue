@@ -51,7 +51,7 @@
 </template>
 
 <script>
-// import axios from 'axios'
+import axios from 'axios'
 
 export default {
 
@@ -65,8 +65,10 @@ export default {
   },
   methods: {
     clearName () {
-      this.name = ''
-      this.pass = ''
+      this.name = '',
+      this.pass = '',
+      this.name1= '',
+      this.pass1=''
     },
     handleOk (evt) {
       // Prevent modal from closing
@@ -80,11 +82,13 @@ export default {
       }
     },handleSubmit () {
         // alert("hi");
-        alert(state.createStore.is_login);
-        ajaxxxx 
-        axios.post('http://localhost:5656/login' , {'username' : this.nam , 'password' : this.pass  }  )
+        // alert(createStore.state.is_login);
+        // ajaxxxx 
+        axios.post('http://localhost:5656/login' , {'username' : this.name , 'password' : this.pass  }  )
         .then ( (res) => {
-            if ( res == true){                
+            console.log(res)
+            if ( res.data == true){  
+                alert("true!")              
                 this.$emit('islogin', true);
                 this.$emit('username',this.name);
                 $store.commit('login')
