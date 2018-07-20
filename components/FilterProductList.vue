@@ -50,17 +50,11 @@ export default {
     components: {
         axios
     },
-    getData() {
-         axios.get(`http://localhost:5656/category`)
-            .then((response) => {
-                this.categories= response.data;
-                console.log(response.data);
-        })
+    
         
     // async asyncData () {
     //     const { data } = await axios.get(`http://localhost:5656/category`)
     //      return {cats: data.name}
-    },
     props : ['categoryname'],
     data() {
         return {
@@ -113,6 +107,13 @@ export default {
                 document.getElementById("colors").style.height = "120px";
                 this.toggle3 = 1; 
             }
+        },
+        getData() {
+         axios.get(`http://localhost:5656/category`)
+            .then((response) => {
+                this.categories= response.data;
+                console.log(response.data);
+        })
         }
         
     }

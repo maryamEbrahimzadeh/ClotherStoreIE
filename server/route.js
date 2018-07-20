@@ -42,7 +42,7 @@ shopRouter.route('/category')
         category.find({}, (err, cats) => {
             res.send(cats);
         })  
-        // console.log("category")
+        console.log("category")
     })
 //here i tauth i have color brand cost and page and perpage in my body
 shopRouter.route('/product')
